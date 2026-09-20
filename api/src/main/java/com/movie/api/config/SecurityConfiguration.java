@@ -15,8 +15,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 /**
- * SpringSecurity配置
- * SpringSecurity默认关闭注解
+ * Spring Security configuration
+ * Enable method security annotations explicitly
  */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -28,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * HTTP验证规则
+     * HTTP security configuration
      *
      * @param http h
      * @throws Exception e
@@ -36,18 +36,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        //开启跨域
+        //Enable CORS
         http.csrf().disable().cors();
 
-        //允许跨域使用iframe
+        //Allow pages to be embedded in iframes
         http.headers().frameOptions().disable();
 
-        //禁用session
+        //Disable server-side sessions
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        //身份验证失败
+        //Authentication failed
         http.exceptionHandling().authenticationEntryPoint((request, response, authException) -> {
-            ResponseUtil.writeJson(response, new ResponseResult<>(403, "身份认证失败, 请重新登录"));
+            ResponseUtil.writeJson(response, new ResponseResult<>(403, "Authentication failed. Please log in again"));
         });
 
         http.addFilter(new AuthorizationFilter(authenticationManagerBean()));
@@ -55,8 +55,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * SpringSecurity有默认的跨域配置 会无法放行RequestHeader带有"Authorization"请求
-     * 防止前端请求api报出cors error
+     * Allow the Authorization header in cross-origin requests.
+     * Configure CORS for frontend API requests.
      *
      * @return *
      */

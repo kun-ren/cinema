@@ -4,23 +4,23 @@
     <el-container>
 
       <el-aside width="400px">
-        <h1 style="color: #FFFFFF;padding-bottom: 40px;letter-spacing: 1px">客服人员</h1>
+        <h1 style="color: #FFFFFF;padding-bottom: 40px;letter-spacing: 1px">Support staff</h1>
         <div class="item" v-for="(item, index) in workerList" :key="index">
           <img class="av" alt="" :src="item.avatar">
           <div>
-            <div class="d1">名字: {{ item.nickname }}</div>
-            <div class="d1">性别: {{ item.gender }}</div>
+            <div class="d1">Name: {{ item.nickname }}</div>
+            <div class="d1">Gender: {{ item.gender }}</div>
             <div class="d1">ID: {{ item.id }}</div>
             <div>
               <el-button
                   @click="handleListEvaluate(item)"
-                  type="text">我的评价
+                  type="text">My reviews
               </el-button>
               <el-button
                   style="padding-left: 40px"
                   :disabled="!isLogin"
                   @click="handleEvaluate(item)"
-                  type="text">评价客服
+                  type="text">Review support worker
               </el-button>
             </div>
           </div>
@@ -28,19 +28,19 @@
       </el-aside>
 
       <el-main>
-        <h1 style="color: #FFFFFF;padding-bottom: 40px;letter-spacing: 1px">影院留言</h1>
+        <h1 style="color: #FFFFFF;padding-bottom: 40px;letter-spacing: 1px">Cinema messages</h1>
         <div class="item2" v-for="(item, index) in leavingMessageList" :key="index">
           <div style="display: flex">
             <img class="av2" :src="item.user.avatar" alt="null">
             <div>
               <div class="d2">{{ item.user.nickname }}</div>
-              <div v-if="!item.user.nickname" class="d2">匿名用户</div>
+              <div v-if="!item.user.nickname" class="d2">Anonymous user</div>
               <div class="d3">{{ item.leavingMessage.content }}</div>
               <div class="d2">Time: {{ item.leavingMessage.createAt }}</div>
             </div>
           </div>
           <div v-if="!item.leavingMessage.reply" class="reply">
-            <div class="d2">客服回复:</div>
+            <div class="d2">Support reply:</div>
             <div class="d3">{{ item.leavingMessage.reply }}</div>
           </div>
         </div>
@@ -49,47 +49,47 @@
                    class="btn"
                    type="success"
                    icon="el-icon-share">
-          添加留言
+          Add message
         </el-button>
       </el-main>
     </el-container>
 
-    <el-dialog title="客服评价" :visible.sync="dialogFormVisible1">
+    <el-dialog title="Support reviews" :visible.sync="dialogFormVisible1">
       <el-form :model="evaluate">
-        <el-form-item label="满意程度" label-width="120px">
-          <el-select v-model="evaluate.type" placeholder="请选择满意程度">
-            <el-option label="满意" value="满意"></el-option>
-            <el-option label="不满意" value="不满意"></el-option>
-            <el-option label="非常满意" value="非常满意"></el-option>
+        <el-form-item label="Satisfaction" label-width="150px">
+          <el-select v-model="evaluate.type" placeholder="Select a satisfaction level">
+            <el-option label="Satisfied" value="Satisfied"></el-option>
+            <el-option label="Dissatisfied" value="Dissatisfied"></el-option>
+            <el-option label="Very satisfied" value="Very satisfied"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item style="width: 100%" label="评价内容" label-width="120px">
+        <el-form-item style="width: 100%" label="Review text" label-width="150px">
           <el-input type="textarea" :rows="8" v-model="evaluate.content" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible1 = false">取 消</el-button>
-        <el-button type="primary" @click="submitEvaluate">提 交 评 价</el-button>
+        <el-button @click="dialogFormVisible1 = false">Cancel</el-button>
+        <el-button type="primary" @click="submitEvaluate">Submit review</el-button>
       </div>
     </el-dialog>
 
-    <el-dialog title="添加留言" :visible.sync="dialogFormVisible2">
+    <el-dialog title="Add message" :visible.sync="dialogFormVisible2">
       <el-input type="textarea" :rows="8" v-model="leavingMessage.content" autocomplete="off"></el-input>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible2 = false">取 消</el-button>
-        <el-button type="primary" @click="submitLeaving">提 交 留 言</el-button>
+        <el-button @click="dialogFormVisible2 = false">Cancel</el-button>
+        <el-button type="primary" @click="submitLeaving">Send message</el-button>
       </div>
     </el-dialog>
 
-    <el-dialog title="我的评价" :visible.sync="dialogFormVisible3">
+    <el-dialog title="My reviews" :visible.sync="dialogFormVisible3">
       <el-table :data="evaluateList">
-        <el-table-column property="createAt" label="日期" width="250"></el-table-column>
-        <el-table-column property="content" label="评语"></el-table-column>
+        <el-table-column property="createAt" label="Date" width="250"></el-table-column>
+        <el-table-column property="content" label="Review"></el-table-column>
         <el-table-column property="type" width="150">
           <template slot-scope="scope">
-            <el-tag v-if="scope.row.type==='非常满意'" type="success">非常满意</el-tag>
-            <el-tag v-if="scope.row.type==='满意'" type="info">满意</el-tag>
-            <el-tag v-if="scope.row.type==='不满意'" type="danger">不满意</el-tag>
+            <el-tag v-if="scope.row.type==='Very satisfied'" type="success">Very satisfied</el-tag>
+            <el-tag v-if="scope.row.type==='Satisfied'" type="info">Satisfied</el-tag>
+            <el-tag v-if="scope.row.type==='Dissatisfied'" type="danger">Dissatisfied</el-tag>
           </template>
         </el-table-column>
       </el-table>
@@ -116,7 +116,7 @@ export default {
       evaluate: {
         wid: '',
         uid: localStorage.getItem("uid"),
-        type: '非常满意',
+        type: 'Very satisfied',
         content: '',
       },
       evaluateList: [],
@@ -169,7 +169,7 @@ export default {
         if (res.success) {
           this.dialogFormVisible1 = false
           this.$message({
-            message: '感谢您对工作人员作出的评价',
+            message: 'Thank you for reviewing our staff',
             type: 'success'
           });
         }
@@ -181,7 +181,7 @@ export default {
         if (res.success) {
           this.dialogFormVisible2 = false
           this.$message({
-            message: '感谢您对小小电影留下的宝贵意见',
+            message: 'Thank you for your feedback on Little Cinema',
             type: 'success'
           });
         }

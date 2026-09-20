@@ -19,7 +19,7 @@ const routes = [
         component: () => import("@/views/Register")
     },
 
-    //公共布局下的路由
+    //Routes within the shared layout
     {
         path: '/',
         component: Layout,

@@ -1,60 +1,60 @@
 <template>
   <div style="padding: 40px">
-    <el-button @click="dialogFormVisible = true" plain>添加影院活动</el-button>
+    <el-button @click="dialogFormVisible = true" plain>Add cinema activity</el-button>
     <el-table
         v-loading="loading"
         :data="list"
         style="width: 100%;margin-top: 20px">
       <el-table-column
           prop="startTime"
-          label="开始时间"
+          label="Start time"
           width="220">
       </el-table-column>
       <el-table-column
           prop="endTime"
-          label="结束时间"
+          label="End time"
           width="220">
       </el-table-column>
       <el-table-column
           prop="content"
-          label="活动内容">
+          label="Activity details">
       </el-table-column>
       <el-table-column
           prop="number"
-          label="参加人数">
+          label="Participants">
       </el-table-column>
-      <el-table-column width="150" label="操作">
+      <el-table-column width="150" label="Actions">
         <template slot-scope="props">
-          <el-button @click="handleDelete(props.$index)" size="small" type="danger" plain>删 除</el-button>
+          <el-button @click="handleDelete(props.$index)" size="small" type="danger" plain>Delete</el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <el-dialog title="新增活动表单" :visible.sync="dialogFormVisible">
+    <el-dialog title="Add activity" :visible.sync="dialogFormVisible">
       <el-form :model="form">
-        <el-form-item style="padding-right: 100px" label="开始日期" label-width="120px">
+        <el-form-item style="padding-right: 100px" label="Start date" label-width="150px">
           <el-date-picker
               v-model="form.startTime"
               type="date"
               value-format="yyyy-MM-dd"
-              placeholder="开始日期">
+              placeholder="Start date">
           </el-date-picker>
         </el-form-item>
-        <el-form-item style="padding-right: 100px" label="结束日期" label-width="120px">
+        <el-form-item style="padding-right: 100px" label="End date" label-width="150px">
           <el-date-picker
               v-model="form.endTime"
               type="date"
               value-format="yyyy-MM-dd"
-              placeholder="结束日期">
+              placeholder="End date">
           </el-date-picker>
         </el-form-item>
-        <el-form-item style="padding-right: 100px" label="活动内容" label-width="120px">
+        <el-form-item style="padding-right: 100px" label="Activity details" label-width="150px">
           <el-input :rows="8" type="textarea" v-model="form.content"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="submitActivity">确 定 保 存</el-button>
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="submitActivity">Save</el-button>
       </div>
     </el-dialog>
 
@@ -73,19 +73,19 @@ export default {
           return time.getTime() > Date.now();
         },
         shortcuts: [{
-          text: '今天',
+          text: 'Today',
           onClick(picker) {
             picker.$emit('pick', new Date());
           }
         }, {
-          text: '昨天',
+          text: 'Yesterday',
           onClick(picker) {
             const date = new Date();
             date.setTime(date.getTime() - 3600 * 1000 * 24);
             picker.$emit('pick', date);
           }
         }, {
-          text: '一周前',
+          text: 'One week ago',
           onClick(picker) {
             const date = new Date();
             date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
@@ -126,7 +126,7 @@ export default {
           this.dialogFormVisible = false
           this.$message({
             type: 'success',
-            message: '保存成功!'
+            message: 'Saved successfully!'
           });
           this.loadList()
         }
@@ -139,7 +139,7 @@ export default {
           this.list.slice(index, 1)
           this.$message({
             type: 'success',
-            message: '删除成功!'
+            message: 'Deleted successfully!'
           });
           this.loadList()
         }

@@ -5,7 +5,7 @@
       <div class="d1">404</div>
       <div class="d2">Sorry, the page you visited does not exist.</div>
       <router-link to="/">
-        <el-button style="margin: 30px 118px" type="primary">返 回 首 页</el-button>
+        <el-button style="margin: 30px 118px" type="primary">Back to home</el-button>
       </router-link>
     </div>
   </div>

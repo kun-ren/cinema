@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "活动接口")
+@Api(tags = "Activity API")
 @RequestMapping("/api/registration")
 public class RegistrationController {
 
@@ -18,13 +18,13 @@ public class RegistrationController {
     private RegistrationService registrationService;
 
     @PostMapping("")
-    @ApiOperation("报名活动")
+    @ApiOperation("Register for activity")
     public void create(@RequestBody Registration registration) throws Exception {
         registrationService.create(registration);
     }
 
     @GetMapping("")
-    @ApiOperation("查询所有报名信息")
+    @ApiOperation("List all registrations")
     public List<Registration> create() {
         return registrationService.findAll();
     }

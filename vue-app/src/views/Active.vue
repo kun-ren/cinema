@@ -9,8 +9,8 @@
           placement="top">
         <el-card>
           <h4 class="h1">{{ item.content }}</h4>
-          <h4 class="p1">活动结束时间：{{ item.endTime }}</h4>
-          <el-button @click="handleRegister(item)" type="text">报名参加</el-button>
+          <h4 class="p1">Activity end time: {{ item.endTime }}</h4>
+          <el-button @click="handleRegister(item)" type="text">Register</el-button>
         </el-card>
       </el-timeline-item>
     </el-timeline>
@@ -48,9 +48,9 @@ export default {
 
     handleRegister(item) {
       if (!localStorage.getItem("uid")) {
-        this.$confirm('系统还没有检测到您的登陆信息, 是否去登录?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('You are not logged in. Go to login?', 'Notice', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           this.$router.push("/login")
@@ -61,7 +61,7 @@ export default {
         SubmitActive(this.form).then(res => {
           if (res.success) {
             this.$message({
-              message: '活动报名成功！',
+              message: 'Registered for the activity successfully!',
               type: 'success'
             });
           }

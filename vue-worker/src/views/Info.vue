@@ -8,62 +8,62 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="订单ID：">
+            <el-form-item label="Order ID: ">
               <span>{{ props.row.order.id }}</span>
             </el-form-item>
-            <el-form-item label="用户ID：">
+            <el-form-item label="User ID: ">
               <span>{{ props.row.user.id }}</span>
             </el-form-item>
-            <el-form-item label="电影ID：">
+            <el-form-item label="Film ID: ">
               <span>{{ props.row.film.id }}</span>
             </el-form-item>
-            <el-form-item label="场次ID：">
+            <el-form-item label="Screening ID: ">
               <span>{{ props.row.arrangement.id }}</span>
             </el-form-item>
-            <el-form-item label="电影名：">
-              <span>《 {{ props.row.film.name }} 》</span>
+            <el-form-item label="Film title: ">
+              <span> {{ props.row.film.name }} </span>
             </el-form-item>
-            <el-form-item label="座位号：">
+            <el-form-item label="Seat number: ">
               <span>{{ props.row.order.seats }}</span>
             </el-form-item>
-            <el-form-item label="订单金额：">
+            <el-form-item label="Order total: ">
               <span>{{ props.row.order.price }}</span>
             </el-form-item>
-            <el-form-item label="下单时间：">
+            <el-form-item label="Ordered at: ">
               <span>{{ props.row.order.createAt }}</span>
             </el-form-item>
-            <el-form-item label="支付时间：">
+            <el-form-item label="Paid at: ">
               <span>{{ props.row.order.payAt }}</span>
             </el-form-item>
           </el-form>
         </template>
       </el-table-column>
       <el-table-column
-          label="订单 ID"
+          label="Order ID"
           width="400"
           prop="order.id">
       </el-table-column>
       <el-table-column
           width="200"
-          label="电影名"
+          label="Film title"
           prop="film.name">
       </el-table-column>
       <el-table-column
           width="200"
-          label="订购座位"
+          label="Booked seats"
           prop="order.seats">
       </el-table-column>
       <el-table-column
           width="200"
-          label="订单金额"
+          label="Order total"
           prop="order.price">
       </el-table-column>
-      <el-table-column label="订单状态">
+      <el-table-column label="Order status">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.order.status === 2" type="success">支付成功</el-tag>
-          <el-tag v-if="scope.row.order.status === 0" type="info">等待支付</el-tag>
-          <el-tag v-if="scope.row.order.status === 3" type="warning">已被撤销</el-tag>
-          <el-tag v-if="scope.row.order.status === 1" type="danger">支付失败</el-tag>
+          <el-tag v-if="scope.row.order.status === 2" type="success">Paid</el-tag>
+          <el-tag v-if="scope.row.order.status === 0" type="info">Awaiting payment</el-tag>
+          <el-tag v-if="scope.row.order.status === 3" type="warning">Canceled</el-tag>
+          <el-tag v-if="scope.row.order.status === 1" type="danger">Payment failed</el-tag>
         </template>
       </el-table-column>
     </el-table>
@@ -116,7 +116,7 @@ export default {
 }
 
 .demo-table-expand label {
-  width: 90px;
+  width: 150px;
   color: #99a9bf;
 }
 

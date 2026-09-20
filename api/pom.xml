@@ -23,39 +23,39 @@
 
     <dependencies>
 
-        <!--SpringBoot依赖-->
+        <!--Spring Boot dependency-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--Redis cache依赖-->
+        <!--Redis cache dependency-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        <!--SpringSecurity依赖-->
+        <!--Spring Security dependency-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!--jwt依赖-->
+        <!--JWT dependency-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>${jwt.version}</version>
         </dependency>
 
-        <!--mybatis-plus依赖-->
+        <!--MyBatis-Plus dependency-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
 
-        <!--mysql驱动-->
+        <!--MySQL driver-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -83,7 +83,7 @@
             <version>${swagger.version}</version>
         </dependency>
 
-        <!--json工具-->
+        <!--JSON utilities-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -91,7 +91,7 @@
         </dependency>
 
 
-        <!--jdk9以上缺失的jar包-->
+        <!--JAXB dependencies required on JDK 9 and later-->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
@@ -133,7 +133,7 @@
         </plugins>
     </build>
 
-    <!--更换阿里云maven镜像-->
+    <!--Aliyun Maven mirror-->
     <repositories>
         <repository>
             <id>maven-ali</id>

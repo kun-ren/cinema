@@ -7,58 +7,58 @@
             <div class="login-form-header">
                 <img style="width: 75px; height: 75px;float: left;padding-right: 30px;" src="../assets/img/logo.png"
                      alt=""/>
-                <div class="login-form-text">小小影院 - 后台管理</div>
+                <div class="login-form-text">Little Cinema - Administration</div>
             </div>
             <div style="color: #000000;font-weight: bolder">
 
-                <p style="font-size: 20px">用户名</p>
-                <el-input class="login-form-input" v-model="username" placeholder="账 号"></el-input>
+                <p style="font-size: 20px">Username</p>
+                <el-input class="login-form-input" v-model="username" placeholder="Username"></el-input>
                 <el-alert
                         v-if="usernameError"
-                        title="请您输入不少于6位的用户名"
+                        title="Enter a username with at least 6 characters"
                         type="error"
                         show-icon>
                 </el-alert>
 
-                <p style="font-size: 20px">密码</p>
-                <el-input class="login-form-input" placeholder="密 码" v-model="password" show-password></el-input>
+                <p style="font-size: 20px">Password</p>
+                <el-input class="login-form-input" placeholder="Password" v-model="password" show-password></el-input>
                 <el-alert
                         v-if="passwordError"
-                        title="请您输入不少于6位的密码"
+                        title="Enter a password with at least 6 characters"
                         type="error"
                         show-icon>
                 </el-alert>
 
-                <p style="font-size: 20px">角色</p>
-                <el-select style="width: 100%" class="login-form-input" v-model="role" placeholder="请选择你的身份">
-                    <el-option label="系统管理员" value="admin"></el-option>
-                    <el-option label="工作人员" value="worker"></el-option>
+                <p style="font-size: 20px">Role</p>
+                <el-select style="width: 100%" class="login-form-input" v-model="role" placeholder="Select your role">
+                    <el-option label="Administrator" value="admin"></el-option>
+                    <el-option label="Staff" value="worker"></el-option>
                 </el-select>
                 <el-alert
                         v-if="roleError"
-                        title="请您选择登入的身份"
+                        title="Select your login role"
                         type="error"
                         show-icon>
                 </el-alert>
 
                 <div style="padding-top: 10px">
-                    <el-checkbox v-model="remember" style="color: #000000">记住密码</el-checkbox>
+                    <el-checkbox v-model="remember" style="color: #000000">Remember me</el-checkbox>
                     <div style="float: right">
-                        <el-tooltip class="item" effect="dark" content="请联系管理员修改" placement="bottom">
+                        <el-tooltip class="item" effect="dark" content="Contact an administrator to reset your password" placement="bottom">
                             <el-link style="font-weight: bolder;font-size: 14px;color: #000000;"
                                      :underline="false">
-                                忘记密码?
+                                Forgot password?
                             </el-link>
                         </el-tooltip>
                     </div>
                 </div>
-                <el-button :loading="loading" @click="postLogin" class="login-form-button" type="primary">登录
+                <el-button :loading="loading" @click="postLogin" class="login-form-button" type="primary">Log in
                 </el-button>
             </div>
             <div class="login-form-footer">
                 <div style="font-weight: bolder;font-size: 16px;color: #000000;"
                      :underline="false">
-                    小小影院 - 后台管理
+                    Little Cinema - Administration
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@
                         }, 700)
                     } else {
                         setTimeout(() => {
-                            //登陆成功
+                            //Login successful
                             console.log(res.data)
                             localStorage.setItem("token", res.data.token)
                             if (this.role === 'worker') {
@@ -150,7 +150,7 @@
 <style scoped>
     .background{
         width:100%;
-        height:100%;  /**宽高100%是为了图片铺满屏幕 */
+        height:100%;  /**Use full width and height to fill the screen */
         z-index:-1;
         position: absolute;
     }

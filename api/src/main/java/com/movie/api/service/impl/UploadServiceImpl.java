@@ -25,16 +25,16 @@ public class UploadServiceImpl implements UploadService {
             InputStream is = file.getInputStream();
             byte[] data = new byte[(int) file.getSize()];
             int i = is.read(data);
-            System.out.println("上传的文件大小=" + i);
+            System.out.println("Uploaded file size=" + i);
             String md5 = DigestUtils.md5DigestAsHex(data);
 
-            //判断是否有相同md5值的文件
+            //Check for an existing file with the same MD5 hash
             Upload one = uploadMapper.selectOne(new QueryWrapper<Upload>().eq("md5", md5));
 
-            //如果存在则直接返回已存在的文件id
+            //Return the existing file ID when a match is found
             if (one != null) return one.getId();
 
-            //不存在则存入数据库
+            //Save to the database if no match exists
             String id = UUID.randomUUID().toString();
             uploadMapper.insert(new Upload(id, data, md5));
             return id;

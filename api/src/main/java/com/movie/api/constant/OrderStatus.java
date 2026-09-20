@@ -1,23 +1,23 @@
 package com.movie.api.constant;
 
 /**
- * 订单状态
+ * Order status
  */
 public final class OrderStatus {
 
-    //15分钟未支付 支付失败
+    //Payment fails if not completed within 15 minutes
     public final static long EXPIRATION_TIME = 1000 * 60 * 15;
 
-    //初始化订单 等待支付
+    //New order awaiting payment
     public final static Integer PAYMENT_WAITING = 0;
 
-    //支付失败
+    //Payment failed
     public final static Integer PAYMENT_FAILED = 1;
 
-    //支付成功
+    //Paid
     public final static Integer PAYMENT_SUCCESSFUL = 2;
 
-    //被管理员撤销
+    //Canceled by an administrator
     public final static Integer COUNTERMAND = 3;
 
 }

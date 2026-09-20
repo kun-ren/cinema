@@ -15,10 +15,10 @@ public interface CartService {
 
     List<CartVO> findAllByUserId(String uid);
 
-    //删除用户选中的购物车
+    //Delete selected cart items
     void deleteCarts(List<Cart> carts);
 
-    //结算用户选中的购物车
+    //Check out selected cart items
     void settleCarts(List<Cart> carts) throws Exception;
 
 }

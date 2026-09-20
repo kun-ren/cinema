@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "活动接口")
+@Api(tags = "Activity API")
 @RequestMapping("/api/activity")
 public class ActivityController {
 
@@ -18,25 +18,25 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping("")
-    @ApiOperation("新增活动")
+    @ApiOperation("Create activity")
     public void create(@RequestBody Activity activity) {
         activityService.create(activity);
     }
 
     @GetMapping("")
-    @ApiOperation("获取全部活动")
+    @ApiOperation("List all activities")
     public List<Activity> findAll() {
         return activityService.findAll();
     }
 
     @GetMapping("{id}")
-    @ApiOperation("根据id查找活动")
+    @ApiOperation("Find activity by ID")
     public Activity findById(@PathVariable String id) {
         return activityService.findById(id);
     }
 
     @DeleteMapping("{id}")
-    @ApiOperation("删除活动")
+    @ApiOperation("Delete activity")
     public void delete(@PathVariable String id) {
         activityService.deleteById(id);
     }

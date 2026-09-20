@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 电影评分前端展示
+ * Film rating view model
  */
 @Data
 @AllArgsConstructor

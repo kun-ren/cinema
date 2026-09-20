@@ -27,8 +27,8 @@ public class UserServiceImpl implements UserService {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.in("username", dto.getUsername());
         User user = userMapper.selectOne(wrapper);
-        if (user == null) throw new Exception("用户名或密码错误");
-        if (!bCryptPasswordEncoder.matches(dto.getPassword(), user.getPassword())) throw new Exception("用户名或密码错误");
+        if (user == null) throw new Exception("Incorrect username or password");
+        if (!bCryptPasswordEncoder.matches(dto.getPassword(), user.getPassword())) throw new Exception("Incorrect username or password");
         return user;
     }
 
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) throws Exception {
         if (findByUsername(user.getUsername()) != null) {
-            throw new Exception("用户名已注册");
+            throw new Exception("Username is already registered");
         }
         String now = DataTimeUtil.getNowTimeString();
         user.setId(UUID.randomUUID().toString());

@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%">
-    <h3 style="letter-spacing: 1px;font-weight: 400;padding-bottom: 20px">购物车</h3>
+    <h3 style="letter-spacing: 1px;font-weight: 400;padding-bottom: 20px">Shopping cart</h3>
 
     <div v-loading="loading">
 
@@ -9,12 +9,12 @@
           <div style="float: left;line-height: 100px;padding-right: 20px">
             <el-checkbox @change="handleCheck" v-model="selectList[index].checked"></el-checkbox>
           </div>
-          <img class="item-film-img" alt="" src="../../assets/img/film.png"/>
+          <img class="item-film-img" :alt="item.film.name" :src="item.film.cover"/>
           <div style="float: left;">
-            <div class="item-film-name">《{{ item.film.name }}》</div>
-            <div class="item-film-seat">座位 : {{ item.cart.seats }}</div>
-            <div class="item-film-seat">手机号码 : {{ item.cart.phone }}</div>
-            <div class="item-film-time">开场时间 :
+            <div class="item-film-name">{{ item.film.name }}</div>
+            <div class="item-film-seat">Seats : {{ item.cart.seats }}</div>
+            <div class="item-film-seat">Phone number : {{ item.cart.phone }}</div>
+            <div class="item-film-time">Starts at :
               <span style="color: red">{{ item.arrangement.date }} - {{ item.arrangement.startTime }}</span>
             </div>
           </div>
@@ -23,7 +23,7 @@
             <el-button @click="handleDelete(index)"
                        type="text"
                        style="color: red;padding-left: 50px"
-                       icon="el-icon-delete">删除
+                       icon="el-icon-delete">Delete
             </el-button>
           </div>
         </div>
@@ -32,16 +32,16 @@
       <div v-if="cartList.length !==0" style="height: 60px;background: #91949c">
         <div>
           <div style="float: left;line-height: 60px;padding: 0 20px;font-size: 14px">
-            <el-checkbox @change="handleCheckAll" v-model="checkAll">全 选</el-checkbox>
+            <el-checkbox @change="handleCheckAll" v-model="checkAll">Select all</el-checkbox>
           </div>
-          <el-button @click="submitCart" type="text" class="sub-btn">全部结算</el-button>
-          <div class="order-footer1">合计 : ￥{{ price }}</div>
+          <el-button @click="submitCart" type="text" class="sub-btn">Check out all</el-button>
+          <div class="order-footer1">Total : ￥{{ price }}</div>
         </div>
       </div>
     </div>
 
     <el-dialog
-        title="扫码支付"
+        title="Scan to pay"
         :show-close="false"
         width="30%"
         :visible.sync="centerDialogVisible"
@@ -50,7 +50,7 @@
         <img class="c-img" src="../../assets/img/c.jpeg" alt="">
       </div>
       <span slot="footer" class="dialog-footer">
-    <el-button type="primary" @click="submitPay">支 付 成 功</el-button>
+    <el-button type="primary" @click="submitPay">Payment completed</el-button>
   </span>
     </el-dialog>
 
@@ -134,9 +134,9 @@ export default {
     },
 
     submitCart() {
-      this.$confirm('请您仔细确认订单金额为' + this.price + '元, 是否继续?', '提示', {
-        confirmButtonText: '确认支付',
-        cancelButtonText: '取消支付',
+      this.$confirm('Please confirm the order total of ' + this.price + ' CNY. Continue?', 'Notice', {
+        confirmButtonText: 'Confirm payment',
+        cancelButtonText: 'Cancel payment',
         type: 'success',
         center: true
       }).then(() => {
@@ -156,7 +156,7 @@ export default {
                 DeleteCartById(this.selectList[i].cart.id)
                 this.$message({
                   type: 'warning',
-                  message: '用户已取消支付, 请您前往我的订单进行支付'
+                  message: 'Payment canceled. Please complete payment in My orders'
                 });
                 this.loadCarts()
               }
@@ -174,7 +174,7 @@ export default {
           DeleteCartById(this.selectList[i].cart.id)
           this.$message({
             type: 'success',
-            message: '恭喜你支付成功!'
+            message: 'Payment successful!'
           });
           this.loadCarts()
         }

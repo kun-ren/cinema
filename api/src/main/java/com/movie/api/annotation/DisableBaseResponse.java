@@ -3,8 +3,8 @@ package com.movie.api.annotation;
 import java.lang.annotation.*;
 
 /**
- * 作用: 不需要GlobalResponseHandler统一拦截返回JSON的方法
- * 例如: 获取二进制图片 Response需要写入文件流 不需要返回json
+ * Skip the JSON response envelope applied by GlobalResponseHandler.
+ * For example, image endpoints write binary data instead of JSON.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

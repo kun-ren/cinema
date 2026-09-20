@@ -12,7 +12,7 @@ const routes = [
         component: () => import("@/views/Login")
     },
 
-    //公共布局下的路由
+    //Routes within the shared layout
     {
         path: '/',
         component: Layout,
@@ -67,7 +67,7 @@ const router = new VueRouter({
     routes: routes
 });
 
-//路由卫士
+//Authentication route guard
 router.beforeEach((to, from, next) => {
     let isAuthenticated = localStorage.getItem("token") !== null
     if (to.name !== 'Login' && !isAuthenticated) next({name: 'Login'})

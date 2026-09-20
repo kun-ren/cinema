@@ -1,10 +1,10 @@
 <template>
   <div class="seat-main">
     <el-steps style="padding-bottom: 50px" :active="2" align-center>
-      <el-step title="步骤1" description="选择电影场次"></el-step>
-      <el-step title="步骤2" description="选择座位号"></el-step>
-      <el-step title="步骤3" description="加入购物车"></el-step>
-      <el-step title="步骤4" description="结算付款"></el-step>
+      <el-step title="Step 1" description="Select screening"></el-step>
+      <el-step title="Step 2" description="Select seats"></el-step>
+      <el-step title="Step 3" description="Add to cart"></el-step>
+      <el-step title="Step 4" description="Checkout"></el-step>
     </el-steps>
     <div class="seat-content">
       <div class="seat-aside">
@@ -21,31 +21,31 @@
             >
               {{ film.name }}
             </div>
-            <div class="seat-aside-text">类型：{{ film.type }}</div>
-            <div class="seat-aside-text">地区：{{ film.region }}</div>
-            <div class="seat-aside-text">时长：{{ film.duration }}分钟</div>
+            <div class="seat-aside-text">Type: {{ film.type }}</div>
+            <div class="seat-aside-text">Region: {{ film.region }}</div>
+            <div class="seat-aside-text">Duration: {{ film.duration }} minutes</div>
           </div>
         </div>
         <div style="padding: 5px 30px">
-          <div class="d1"><span>放映：</span>{{ arrangement.type }}</div>
+          <div class="d1"><span>Format: </span>{{ arrangement.type }}</div>
           <div class="d1" style="color: #f56c6c">
-            <span>开场：</span>{{ arrangement.date }}
+            <span>Starts: </span>{{ arrangement.date }}
             {{ arrangement.startTime }}
           </div>
-          <div class="d1"><span>散场：</span>{{ arrangement.endTime }}</div>
-          <div class="d1"><span>票价：</span>¥{{ arrangement.price }}/张</div>
+          <div class="d1"><span>Ends: </span>{{ arrangement.endTime }}</div>
+          <div class="d1"><span>Ticket price: </span>¥{{ arrangement.price }}/ticket</div>
           <el-divider></el-divider>
           <div class="d1">
-            已选座位：
+            Selected seats:
             <el-tag v-for="(item, i) in userSelectSeats" :key="i"
                     type="danger"
                     style="margin-right: 5px"
                     effect="plain">
-              {{ item }} 号
+              Seat {{ item }}
             </el-tag>
           </div>
           <div class="d1" style="padding-top: 10px">
-            总计：
+            Total:
             <span style="color: #f56c6c">¥ </span>
             <span style="color: #f56c6c; font-size: 25px; font-weight: bold"
             >{{ cart.price }}</span
@@ -56,12 +56,12 @@
             <el-input
                 v-model="cart.phone"
                 style="padding-top: 20px; padding-bottom: 30px"
-                placeholder="请输入手机号码"
+                placeholder="Enter your phone number"
                 clearable
             >
             </el-input>
             <el-button @click="submitSeat" class="add-cart-btn" type="danger" round
-            >加入购物车
+            >Add to cart
             </el-button>
           </div>
         </div>
@@ -70,31 +70,31 @@
       <div class="hall seat-select">
         <div style="padding-left: 30px" class="seat-example">
           <div class="selectable-example example">
-            <span>可选座位</span>
+            <span>Available seats</span>
           </div>
           <div class="sold-example example">
-            <span>已售座位</span>
+            <span>Sold seats</span>
           </div>
           <div class="selected-example example">
-            <span>已选座位</span>
+            <span>Selected seats</span>
           </div>
         </div>
 
         <div class="seats-block">
           <div class="seats-container">
             <div class="screen-container" style="left: 5px">
-              <div class="screen">银幕中央</div>
+              <div class="screen">Center of screen</div>
               <div class="c-screen-line"></div>
             </div>
 
             <div class="seats-wrapper">
               <div style="padding: 0 40px;width: 500px">
                 <span v-for="(item, index) in seats" :key="index">
-                  <!--不可选-->
+                  <!--Unavailable-->
                   <span v-if="item.status === 0" class="seat sold item"/>
-                  <!--可选-->
+                  <!--Available-->
                   <span v-if="item.status === 1" @click="handleSelect(index)" class="seat selectable item"/>
-                  <!--已选-->
+                  <!--Selected-->
                   <span v-if="item.status === 2" @click="handleDisSelect(index)" class="seat selected item"/>
                 </span>
               </div>
@@ -140,9 +140,9 @@ export default {
   },
 
   methods: {
-    //0 已选
-    //1 可选
-    //2 已选中
+    //0 Selected
+    //1 Available
+    //2 Selected
     loadSeats() {
       const n = this.arrangement.seatNumber
       let arr = new Array(n)
@@ -176,14 +176,14 @@ export default {
     checkPhoneAndSeats() {
       if (this.userSelectSeats.length === 0) {
         this.$message({
-          message: '请选择要订购的座位',
+          message: 'Select the seats to book',
           type: 'warning'
         });
         return false;
       }
       if (this.cart.phone.length !== 11) {
         this.$message({
-          message: '请输入11位的电话号码',
+          message: 'Enter an 11-digit phone number',
           type: 'warning'
         });
         return false;
@@ -193,13 +193,11 @@ export default {
 
     submitSeat() {
       if (this.checkPhoneAndSeats()) {
-        for (let i = 0; i < this.userSelectSeats.length; i++) {
-          this.cart.seats += this.userSelectSeats[i] + '号'
-        }
+        this.cart.seats = this.userSelectSeats.join(',')
         console.log(this.cart)
         CreateCart(this.cart).then(res => {
           this.$message({
-            message: '以为您添加购物车成功，请尽快付款吧',
+            message: 'Added to your cart. Please complete payment soon',
             type: 'success'
           });
           this.$router.go(-1)

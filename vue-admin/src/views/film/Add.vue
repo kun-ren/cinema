@@ -1,9 +1,9 @@
 <template>
   <div class="film-list">
 
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" :model="form" label-width="140px">
 
-      <el-form-item label="电影封面">
+      <el-form-item label="Film cover">
         <el-upload
             class="upload-demo"
             drag
@@ -13,77 +13,77 @@
             :on-success="handleUploadSuccess"
             multiple>
           <i class="el-icon-upload"></i>
-          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-          <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过50mb</div>
+          <div class="el-upload__text">Drop a file here or <em>Click to upload</em></div>
+          <div class="el-upload__tip" slot="tip">Only upload jpg/png files, up to 50mb</div>
         </el-upload>
       </el-form-item>
 
-      <el-form-item label="电影名称">
+      <el-form-item label="Film title">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
 
-      <el-form-item label="上映地区">
-        <el-select v-model="form.region" placeholder="请选择上映区域">
-          <el-option label="内地" value="内地"></el-option>
-          <el-option label="香港" value="香港"></el-option>
-          <el-option label="台湾" value="台湾"></el-option>
-          <el-option label="日本" value="日本"></el-option>
-          <el-option label="美国" value="美国"></el-option>
-          <el-option label="韩国" value="韩国"></el-option>
-          <el-option label="英国" value="英国"></el-option>
-          <el-option label="英国" value="英国"></el-option>
-          <el-option label="法国" value="法国"></el-option>
-          <el-option label="印度" value="印度"></el-option>
-          <el-option label="其他" value="其他"></el-option>
+      <el-form-item label="Release region">
+        <el-select v-model="form.region" placeholder="Select the release region">
+          <el-option label="Mainland China" value="Mainland China"></el-option>
+          <el-option label="Hong Kong" value="Hong Kong"></el-option>
+          <el-option label="Taiwan" value="Taiwan"></el-option>
+          <el-option label="Japan" value="Japan"></el-option>
+          <el-option label="USA" value="USA"></el-option>
+          <el-option label="South Korea" value="South Korea"></el-option>
+          <el-option label="UK" value="UK"></el-option>
+          <el-option label="UK" value="UK"></el-option>
+          <el-option label="France" value="France"></el-option>
+          <el-option label="India" value="India"></el-option>
+          <el-option label="Other" value="Other"></el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item label="全片时长">
+      <el-form-item label="Duration">
         <el-input-number v-model="form.duration" :min="10" :max="550"></el-input-number>
       </el-form-item>
 
-      <el-form-item label="上映时间">
+      <el-form-item label="Release date">
         <el-col :span="11">
-          <el-date-picker type="date" placeholder="选择日期" value-format="yyyy-MM-dd" v-model="form.releaseTime"
+          <el-date-picker type="date" placeholder="Select date" value-format="yyyy-MM-dd" v-model="form.releaseTime"
                           style="width: 100%;"></el-date-picker>
         </el-col>
       </el-form-item>
 
-      <el-form-item label="即时上架">
+      <el-form-item label="Publish now">
         <el-switch v-model="form.status"></el-switch>
       </el-form-item>
 
-      <el-form-item label="电影类型">
+      <el-form-item label="Genre">
         <el-radio-group v-model="form.type">
-          <el-radio style="padding-bottom: 20px" label="爱情"></el-radio>
-          <el-radio label="喜剧"></el-radio>
-          <el-radio label="科幻"></el-radio>
-          <el-radio label="动画"></el-radio>
-          <el-radio style="padding-bottom: 20px" label="恐怖"></el-radio>
-          <el-radio label="悬疑"></el-radio>
-          <el-radio label="冒险"></el-radio>
-          <el-radio label="动作"></el-radio>
-          <el-radio style="padding-bottom: 20px" label="犯罪"></el-radio>
-          <el-radio label="历史"></el-radio>
-          <el-radio label="古装"></el-radio>
-          <el-radio label="战争"></el-radio>
-          <el-radio label="纪录片"></el-radio>
-          <el-radio style="padding-bottom: 20px" label="家庭"></el-radio>
-          <el-radio label="传记"></el-radio>
-          <el-radio label="武侠"></el-radio>
-          <el-radio label="儿童"></el-radio>
-          <el-radio label="短片"></el-radio>
-          <el-radio label="其他"></el-radio>
+          <el-radio style="padding-bottom: 20px" label="Romance"></el-radio>
+          <el-radio label="Comedy"></el-radio>
+          <el-radio label="Science fiction"></el-radio>
+          <el-radio label="Animation"></el-radio>
+          <el-radio style="padding-bottom: 20px" label="Horror"></el-radio>
+          <el-radio label="Mystery"></el-radio>
+          <el-radio label="Adventure"></el-radio>
+          <el-radio label="Action"></el-radio>
+          <el-radio style="padding-bottom: 20px" label="Crime"></el-radio>
+          <el-radio label="History"></el-radio>
+          <el-radio label="Period drama"></el-radio>
+          <el-radio label="War"></el-radio>
+          <el-radio label="Documentary"></el-radio>
+          <el-radio style="padding-bottom: 20px" label="Family"></el-radio>
+          <el-radio label="Biography"></el-radio>
+          <el-radio label="Martial arts"></el-radio>
+          <el-radio label="Children"></el-radio>
+          <el-radio label="Short film"></el-radio>
+          <el-radio label="Other"></el-radio>
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="内容简介">
+      <el-form-item label="Synopsis">
         <el-input rows="8" type="textarea" v-model="form.introduction"></el-input>
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">确认提交</el-button>
-        <el-button>取消</el-button>
+        <el-button type="primary" @click="onSubmit">Submit</el-button>
+        <el-button>Cancel</el-button>
       </el-form-item>
 
     </el-form>
@@ -122,7 +122,7 @@ export default {
       AddFilm(film).then(res => {
         this.$message({
           type: 'success',
-          message: '电影添加成功!'
+          message: 'Film added successfully!'
         });
         this.$router.push("/film/list")
       })

@@ -36,11 +36,11 @@ public class FilmEvaluateServiceImpl implements FilmEvaluateService {
         wrapper.in("uid", filmEvaluate.getUid());
         FilmEvaluate one = filmEvaluateMapper.selectOne(wrapper);
         if (one != null) {
-            throw new Exception("感谢您的参与，但是您已评分请不要重复操作！");
+            throw new Exception("You have already rated this film!");
         }
         filmEvaluate.setCreateAt(DataTimeUtil.getNowTimeString());
         filmEvaluateMapper.insert(filmEvaluate);
-        //为电影添加热度
+        //Increase film popularity
         Film film = filmMapper.selectById(filmEvaluate.getFid());
         film.setHot(film.getHot() + 1);
         filmMapper.updateById(film);

@@ -18,17 +18,17 @@
                  score-template="{value}">
         </el-rate>
       </div>
-      <div class="p2">电影类型 : {{ film.type }}</div>
-      <div class="p2">{{ film.region }} / {{ film.duration }}分钟</div>
-      <div class="p2">上映日期 : {{ film.releaseTime }} 上映</div>
+      <div class="p2">Genre : {{ film.type }}</div>
+      <div class="p2">{{ film.region }} / {{ film.duration }} minutes</div>
+      <div class="p2">Release date : {{ film.releaseTime }} Released</div>
       <div style="padding-top: 30px">
         <router-link style="margin-right: 20px" :to="'/film/ticket?fid=' + filmId">
           <el-button type="danger" style="width: 130px;letter-spacing: 2px">
-            <i style="padding-right: 5px;font-size: 15px" class="el-icon-s-finance"></i>特惠购票
+            <i style="padding-right: 5px;font-size: 15px" class="el-icon-s-finance"></i>Buy tickets
           </el-button>
         </router-link>
         <el-button @click="openComment" type="danger" style="width: 130px;letter-spacing: 2px">
-          <i style="padding-right: 5px;font-size: 15px" class="el-icon-star-on"></i>评分
+          <i style="padding-right: 5px;font-size: 15px" class="el-icon-star-on"></i>Rating
         </el-button>
       </div>
     </div>
@@ -39,7 +39,7 @@
 
     <el-dialog
         :show-close=false
-        title="电影评分"
+        title="Film rating"
         :visible.sync="dialogVisible"
         width="30%">
       <div class="block">
@@ -52,12 +52,12 @@
           style="margin-top: 40px"
           type="textarea"
           :rows="8"
-          placeholder="请输入内容"
+          placeholder="Enter a message"
           v-model="form.comment">
       </el-input>
       <span slot="footer" class="dialog-footer">
-                <el-button @click="dialogVisible = false">取 消</el-button>
-                <el-button type="primary" @click="submitComment">确 认 提 交</el-button>
+                <el-button @click="dialogVisible = false">Cancel</el-button>
+                <el-button type="primary" @click="submitComment">Submit</el-button>
              </span>
     </el-dialog>
 
@@ -92,16 +92,16 @@ export default {
 
     openComment() {
       if (!localStorage.getItem("uid")) {
-        this.$confirm('系统还没有检测到您的登陆信息, 是否去登录?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('You are not logged in. Go to login?', 'Notice', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           this.$router.push("/login")
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消为电影评分'
+            message: 'Film rating canceled'
           });
         });
       } else {

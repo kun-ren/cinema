@@ -40,10 +40,10 @@ public class FilmServiceImpl implements FilmService {
     @Override
     public List<Film> findByRegionAndType(String region, String type) {
         QueryWrapper<Film> wrapper = new QueryWrapper<>();
-        if (!region.equals("全部")) {
+        if (!region.equals("All")) {
             wrapper.in("region", region);
         }
-        if (!type.equals("全部")) {
+        if (!type.equals("All")) {
             wrapper.in("type", type);
         }
         return filmMapper.selectList(wrapper);

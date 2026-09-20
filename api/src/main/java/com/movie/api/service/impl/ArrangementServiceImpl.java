@@ -50,7 +50,8 @@ public class ArrangementServiceImpl implements ArrangementService {
         List<Order> orders = orderMapper.selectList(new QueryWrapper<Order>().in("aid", id));
         List<Integer> seats = new ArrayList<>();
         for (Order o : orders) {
-            String[] split = o.getSeats().split("号");
+            // Accept comma-separated seats and legacy non-numeric separators.
+            String[] split = o.getSeats().split("\\D+");
             for (String s : split) {
                 seats.add(Integer.parseInt(s));
             }

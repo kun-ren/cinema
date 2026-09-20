@@ -2,7 +2,7 @@
   <div class="aside">
     <div class="aside-header" style="padding-top: 30px">
       <img style="width: 40px; height: 40px;float: left" src="../../assets/img/logo.png" alt=""/>
-      <div style="padding-left: 15px;padding-top: 8px;float: left">小小影院 - 客服</div>
+      <div style="padding-left: 15px;padding-top: 8px;float: left">Little Cinema - Support</div>
     </div>
     <div>
       <el-col style="padding-top: 30px">
@@ -15,42 +15,42 @@
           <router-link to="/leaving">
             <el-menu-item style="padding-left: 65px" index="1">
               <i class="el-icon-s-promotion"></i>
-              <span slot="title">影院留言</span>
+              <span slot="title">Cinema messages</span>
             </el-menu-item>
           </router-link>
 
           <router-link to="/phone">
             <el-menu-item style="padding-left: 65px" index="2">
               <i class="el-icon-phone-outline"></i>
-              <span slot="title">电话回访</span>
+              <span slot="title">Phone follow-up</span>
             </el-menu-item>
           </router-link>
 
           <router-link to="/activity">
             <el-menu-item style="padding-left: 65px" index="3">
               <i class="el-icon-s-flag"></i>
-              <span slot="title">活动安排</span>
+              <span slot="title">Activities</span>
             </el-menu-item>
           </router-link>
 
           <router-link to="/info">
             <el-menu-item style="padding-left: 65px" index="4">
               <i class="el-icon-s-data"></i>
-              <span slot="title">信息统计</span>
+              <span slot="title">Order statistics</span>
             </el-menu-item>
           </router-link>
 
           <router-link to="/evaluate">
             <el-menu-item style="padding-left: 65px" index="5">
               <i class="el-icon-s-management"></i>
-              <span slot="title">我的评价</span>
+              <span slot="title">My reviews</span>
             </el-menu-item>
           </router-link>
 
           <router-link to="/setting">
             <el-menu-item style="padding-left: 65px" index="6">
               <i class="el-icon-setting"></i>
-              <span slot="title">个人设置</span>
+              <span slot="title">Settings</span>
             </el-menu-item>
           </router-link>
 

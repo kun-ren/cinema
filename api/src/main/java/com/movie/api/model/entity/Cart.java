@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 购物车
+ * Shopping cart
  */
 @Data
 @TableName("t_cart")
@@ -16,20 +16,20 @@ public class Cart implements Serializable {
 
     private String id;
 
-    //用户id
+    //User ID
     private String uid;
 
-    //场次id
+    //Screening ID
     private String aid;
 
-    //座位号
+    //Seat number
     private String seats;
 
     private String phone;
 
     private Integer status;
 
-    //金额
+    //Amount
     private double price;
 
 }

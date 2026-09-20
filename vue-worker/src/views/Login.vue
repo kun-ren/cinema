@@ -4,35 +4,35 @@
       <div class="login-form-header">
         <img style="width: 75px; height: 75px;float: left;padding-right: 30px;" src="../assets/img/logo.png"
              alt=""/>
-        <div class="login-form-text">小小影院 - 客服系统</div>
+        <div class="login-form-text">Little Cinema - Support portal</div>
       </div>
       <div style="color: #91949c;font-weight: bolder">
 
         <p>Username</p>
-        <el-input class="login-form-input" v-model="username" placeholder="账 号"></el-input>
+        <el-input class="login-form-input" v-model="username" placeholder="Username"></el-input>
         <el-alert
             v-if="usernameError"
-            title="请您输入不少于6位的用户名"
+            title="Enter a username with at least 6 characters"
             type="error"
             show-icon>
         </el-alert>
 
         <p>Password</p>
-        <el-input class="login-form-input" placeholder="密 码" v-model="password" show-password></el-input>
+        <el-input class="login-form-input" placeholder="Password" v-model="password" show-password></el-input>
         <el-alert
             v-if="passwordError"
-            title="请您输入不少于6位的密码"
+            title="Enter a password with at least 6 characters"
             type="error"
             show-icon>
         </el-alert>
 
         <div style="padding-top: 10px">
-          <el-checkbox v-model="remember">记住密码</el-checkbox>
+          <el-checkbox v-model="remember">Remember me</el-checkbox>
           <div style="float: right">
-            <el-tooltip class="item" effect="dark" content="请联系管理员修改" placement="bottom">
+            <el-tooltip class="item" effect="dark" content="Contact an administrator to reset your password" placement="bottom">
               <el-link style="font-weight: bolder;font-size: 14px;color: #91949c;"
                        :underline="false">
-                忘记密码?
+                Forgot password?
               </el-link>
             </el-tooltip>
           </div>
@@ -42,7 +42,7 @@
       <div class="login-form-footer">
         <div style="font-weight: bolder;font-size: 16px;color: #91949c;"
              :underline="false">
-          Copyright 2021 小小影院 - 客服系统
+          Copyright 2021 Little Cinema - Support portal
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@ export default {
           }, 700)
         } else {
           setTimeout(() => {
-            //登陆成功
+            //Login successful
             localStorage.setItem("token", res.data.token)
             localStorage.setItem("wid", res.data.worker.id)
             this.$router.push("/")

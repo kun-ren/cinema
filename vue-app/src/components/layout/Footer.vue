@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
-    <p> Copyright 2021 小小影院</p>
-    <p>京公网安备 1101010110110110号 京ICP备123456789号-1</p>
+    <p> Copyright 2021 Little Cinema</p>
+    <p>Beijing Public Security Registration No. 1101010110110110 | Beijing ICP No. 123456789-1</p>
   </div>
 </template>
 

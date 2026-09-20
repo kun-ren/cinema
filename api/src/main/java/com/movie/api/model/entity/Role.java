@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 权限角色
+ * Permission role
  */
 @Data
 @TableName("t_role")

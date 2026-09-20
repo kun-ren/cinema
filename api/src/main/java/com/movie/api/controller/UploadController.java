@@ -19,10 +19,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * 上传图片存放为二进制到mysql
+ * Store uploaded images as binary data in MySQL
  */
 @RestController
-@Api(tags = "上传接口")
+@Api(tags = "Upload API")
 @RequestMapping("/api/upload")
 public class UploadController {
 
@@ -36,25 +36,25 @@ public class UploadController {
     private UploadMapper uploadMapper;
 
     @PostMapping("")
-    @ApiOperation(value = "上传图片")
+    @ApiOperation(value = "Upload image")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_WORKER')")
     @DisableBaseResponse
     public String upload(MultipartFile file) throws Exception {
-        if (file == null) throw new Exception("请求参数缺失");
+        if (file == null) throw new Exception("Required request parameter is missing");
         if (file.isEmpty()) {
-            throw new Exception("上传失败，请选择文件");
+            throw new Exception("Upload failed. Please select a file");
         }
         return "http://localhost:" + serverPort + "/api/upload?id=" + uploadService.checkAndSaveUpload(file);
     }
 
     @DeleteMapping("")
-    @ApiOperation(value = "删除图片")
+    @ApiOperation(value = "Delete image")
     public void delete(@RequestParam("id") String id) {
         uploadService.deleteById(id);
     }
 
     @GetMapping("")
-    @ApiOperation(value = "获取图片")
+    @ApiOperation(value = "Get image")
     @PermitAll
     @DisableBaseResponse
     public void get(@RequestParam("id") String id, HttpServletResponse response) throws Exception {
@@ -63,7 +63,7 @@ public class UploadController {
         }
         Upload upload = uploadMapper.selectById(id);
         if (upload == null) {
-            throw new Exception("图片不存在");
+            throw new Exception("Image does not exist");
         }
         byte[] data = upload.getBytes();
         response.setContentType("image/jpeg");

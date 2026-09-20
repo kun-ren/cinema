@@ -11,12 +11,12 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
               <el-link :underline="false" href="/setting">
-                <i style="font-size: 15px; padding-right: 3px" class="el-icon-setting"></i>个人设置
+                <i style="font-size: 15px; padding-right: 3px" class="el-icon-setting"></i>Settings
               </el-link>
             </el-dropdown-item>
             <el-dropdown-item divided>
               <el-button type="text" @click="handleLogout">
-                <i style="font-size: 15px; padding-right: 3px" class="el-icon-switch-button"></i>退出登录
+                <i style="font-size: 15px; padding-right: 3px" class="el-icon-switch-button"></i>Log out
               </el-button>
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -29,12 +29,12 @@
             <i style="font-size: 18px" class="el-icon-bell"></i>
           </el-badge>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>这里还没有消息</el-dropdown-item>
+            <el-dropdown-item>No messages yet</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
       <div class="header-icon">
-        <el-tooltip content="小小影院 - 客服系统" placement="top">
+        <el-tooltip content="Little Cinema - Support portal" placement="top">
           <i style="font-size: 20px" class="el-icon-warning-outline"></i>
         </el-tooltip>
       </div>

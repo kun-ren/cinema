@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 用户
+ * User
  */
 @Data
 @TableName("t_user")
@@ -22,22 +22,22 @@ public class User implements Serializable {
 
     private String password;
 
-    //昵称
+    //Nickname
     private String nickname;
 
-    //邮箱
+    //Email
     private String email;
 
-    //生日
+    //Birthday
     private String birthday;
 
-    //性别
+    //Gender
     private String gender;
 
-    //个人简介
+    //Biography
     private String info;
 
-    //用户头像URL
+    //User avatar URL
     private String avatar;
 
     private String createAt;

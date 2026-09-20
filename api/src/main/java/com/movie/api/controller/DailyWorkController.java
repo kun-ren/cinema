@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "每日工作接口")
+@Api(tags = "Daily work API")
 @RequestMapping("/api/daily")
 public class DailyWorkController {
 
@@ -18,19 +18,19 @@ public class DailyWorkController {
     private DailyWorkService dailyWorkService;
 
     @PostMapping("")
-    @ApiOperation("添加每日工作")
+    @ApiOperation("Add daily work")
     public void create(@RequestBody DailyWork dailyWork){
         dailyWorkService.save(dailyWork);
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("根据id删除每日工作")
+    @ApiOperation("Delete daily work by ID")
     public void delete(@PathVariable String id){
         dailyWorkService.deleteById(id);
     }
 
     @GetMapping("")
-    @ApiOperation("查询所有")
+    @ApiOperation("List all")
     public List<DailyWork> findAll(){
         return dailyWorkService.findAll();
     }

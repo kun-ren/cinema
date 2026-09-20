@@ -2,58 +2,58 @@
   <div class="main">
 
     <el-dialog
-        title="新增电影排片"
+        title="Add screening"
         :visible.sync="dialog"
         width="50%">
 
-      <el-form ref="form" :model="arrangement" label-width="80px">
+      <el-form ref="form" :model="arrangement" label-width="140px">
 
-        <el-form-item label="电影名称">
+        <el-form-item label="Film title">
           <el-input :disabled="true" v-model="arrangement.name"></el-input>
         </el-form-item>
 
-        <el-form-item label="开放座位">
+        <el-form-item label="Available seats">
           <el-input-number v-model="arrangement.seatNumber" :min="10" :max="100"></el-input-number>
         </el-form-item>
 
-        <el-form-item label="放映类型">
-          <el-select v-model="arrangement.type" placeholder="请选择放映类型">
-            <el-option label="2D 放映" value="2D放映"></el-option>
-            <el-option label="3D 放映" value="3D放映"></el-option>
+        <el-form-item label="Screening format">
+          <el-select v-model="arrangement.type" placeholder="Select a screening format">
+            <el-option label="2D" value="2D"></el-option>
+            <el-option label="3D" value="3D"></el-option>
           </el-select>
         </el-form-item>
 
-        <el-form-item style="width: 500px" label="放映日期">
+        <el-form-item style="width: 500px" label="Screening date">
           <el-col :span="11">
-            <el-date-picker type="date" placeholder="选择日期" v-model="arrangement.date"
+            <el-date-picker type="date" placeholder="Select date" v-model="arrangement.date"
                             value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
           </el-col>
         </el-form-item>
 
-        <el-form-item style="width: 500px" label="放映时间">
+        <el-form-item style="width: 500px" label="Screening time">
           <el-col :span="11">
-            <el-time-picker placeholder="开始时间" value-format="HH:mm:ss" v-model="arrangement.startTime"
+            <el-time-picker placeholder="Start time" value-format="HH:mm:ss" v-model="arrangement.startTime"
                             style="width: 100%;"></el-time-picker>
           </el-col>
           <el-col style="text-align: center" class="line" :span="2">-</el-col>
           <el-col :span="11">
-            <el-time-picker placeholder="结束时间" value-format="HH:mm:ss" v-model="arrangement.endTime"
+            <el-time-picker placeholder="End time" value-format="HH:mm:ss" v-model="arrangement.endTime"
                             style="width: 100%;"></el-time-picker>
           </el-col>
         </el-form-item>
 
-        <el-form-item label="电影票价">
+        <el-form-item label="Ticket price">
           <el-input-number v-model="arrangement.price" :precision="2" :step="0.1" :max="999.99"></el-input-number>
         </el-form-item>
 
-        <el-form-item label="排片人">
+        <el-form-item label="Scheduled by">
           <el-input type="textarea" v-model="arrangement.founder"></el-input>
         </el-form-item>
       </el-form>
 
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialog = false">取 消</el-button>
-        <el-button type="primary" @click="submitEditArrange">确 定</el-button>
+        <el-button @click="dialog = false">Cancel</el-button>
+        <el-button type="primary" @click="submitEditArrange">Confirm</el-button>
       </span>
     </el-dialog>
 
@@ -63,40 +63,40 @@
         style="width: 100%">
 
       <el-table-column
-          label="电影名"
+          label="Film title"
           prop="name">
       </el-table-column>
 
       <el-table-column
-          label="放映日期"
+          label="Screening date"
           prop="date">
       </el-table-column>
 
       <el-table-column
-          label="开放座位"
+          label="Available seats"
           prop="seatNumber">
       </el-table-column>
 
-      <el-table-column label="放映类型">
+      <el-table-column label="Screening format">
         <template slot-scope="scope">
-          <el-tag effect="dark" v-if="scope.row.type === '2D放映'" type="success" disable-transitions>2D 放映</el-tag>
-          <el-tag effect="dark" v-if="scope.row.type === '3D放映'" type="primary" disable-transitions>3D 放映</el-tag>
+          <el-tag effect="dark" v-if="scope.row.type === '2D'" type="success" disable-transitions>2D</el-tag>
+          <el-tag effect="dark" v-if="scope.row.type === '3D'" type="primary" disable-transitions>3D</el-tag>
         </template>
       </el-table-column>
 
       <el-table-column
-          label="票房统计"
+          label="Box office"
           prop="boxOffice">
       </el-table-column>
 
       <el-table-column
-          label="结束时间"
+          label="End time"
           prop="endTime">
       </el-table-column>
 
-      <el-table-column label="本场票价">
+      <el-table-column label="Ticket price">
         <template slot-scope="scope">
-          <el-tag size="medium" effect="plain">{{ scope.row.price }} 元</el-tag>
+          <el-tag size="medium" effect="plain">{{ scope.row.price }}  CNY</el-tag>
         </template>
       </el-table-column>
 
@@ -105,36 +105,36 @@
           <el-input
               v-model="search"
               size="mini"
-              placeholder="输入关键字搜索"/>
+              placeholder="Search by keyword"/>
         </template>
         <template style="white-space: nowrap" slot-scope="scope">
           <el-button
               size="mini"
               icon="el-icon-s-ticket"
               type="success"
-              @click="handleBoxOffice(scope.$index, scope.row)">统计票房
+              @click="handleBoxOffice(scope.$index, scope.row)">Update box office
           </el-button>
           <el-button
               size="mini"
               icon="el-icon-edit"
               type="primary"
-              @click="handleEdit(scope.$index, scope.row)">修改
+              @click="handleEdit(scope.$index, scope.row)">Edit
           </el-button>
 
           <el-popconfirm
-              confirm-button-text='确定'
-              cancel-button-text='不用了'
+              confirm-button-text='Confirm'
+              cancel-button-text='No thanks'
               icon="el-icon-info"
               icon-color="red"
               @confirm="handleDelete(scope.$index, scope.row)"
-              title=" 确定要删除此电影档期吗？ "
+              title=" Delete this screening? "
           >
             <el-button
                 style="margin-left: 8px"
                 size="mini"
                 icon="el-icon-delete"
                 type="danger"
-                slot="reference">删除
+                slot="reference">Delete
             </el-button>
           </el-popconfirm>
         </template>
@@ -166,7 +166,7 @@ export default {
         startTime: '',
         endTime: '',
         founder: '',
-        type: '2D放映',
+        type: '2D',
       },
     }
   },
@@ -198,7 +198,7 @@ export default {
         if (res.success) {
           this.dialog = false;
           this.$message({
-            message: '排片添加成功！',
+            message: 'Screening added successfully!',
             type: 'success'
           });
         }
@@ -209,35 +209,35 @@ export default {
       DeleteArrangement(row.id).then(res => {
         this.List.splice(index, 1)
         this.$message({
-          message: '排片信息删除成功！',
+          message: 'Screening deleted successfully!',
           type: 'success'
         });
       })
     },
 
     handleBoxOffice(index, row) {
-      this.$prompt('请输入此场次的票房', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$prompt('Enter the box office total for this screening', 'Notice', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
       }).then(({value}) => {
         if (!value) {
           this.$message({
             type: 'warning',
-            message: '输入不能为空'
+            message: 'A value is required'
           });
           return
         }
         if (value < 0) {
           this.$message({
             type: 'warning',
-            message: '请输入不少于0的数字'
+            message: 'Enter a number greater than or equal to zero'
           });
           return
         }
         this.List[index].boxOffice = value
         UpdateArrangement(this.List[index]).then(res => {
           this.$message({
-            message: '票房统计成功',
+            message: 'Box office updated successfully',
             type: 'success',
           });
         })

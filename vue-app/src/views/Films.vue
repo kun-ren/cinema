@@ -3,7 +3,7 @@
     <div class="tags-panel">
       <ul class="tags-lines">
         <li class="tags-line">
-          <div class="tags-title">类型 :</div>
+          <div class="tags-title">Type :</div>
           <ul class="tags">
             <li v-for="item in typeList" :class="selectType===item ? 'active' : ''" @click="handleTypeSelect(item)">
               <router-link :to=" '/films?region='+ selectRegion + '&type=' + item ">{{ item }}</router-link>
@@ -11,7 +11,7 @@
           </ul>
         </li>
         <li class="tags-line">
-          <div class="tags-title">地区 :</div>
+          <div class="tags-title">Region :</div>
           <ul class="tags">
             <li v-for="item in regionList" :class="selectRegion===item ? 'active' : ''"
                 @click="handleRegionSelect(item)">
@@ -48,10 +48,10 @@ export default {
 
   data() {
     return {
-      selectType: '全部',
-      selectRegion: '全部',
-      typeList: ["全部", "家庭", "惊悚", "科幻", "爱情", "动作", "喜剧", "恐怖", "悬疑", "犯罪", "冒险", "战争", "历史", "武侠", "传记", "古装", "其他"],
-      regionList: ["全部", "内地", "香港", "台湾", "美国", "韩国", "日本", "泰国", "印度", "法国", "英国", "德国", "其他"],
+      selectType: 'All',
+      selectRegion: 'All',
+      typeList: ["All", "Family", "Thriller", "Science fiction", "Romance", "Action", "Comedy", "Horror", "Mystery", "Crime", "Adventure", "War", "History", "Martial arts", "Biography", "Period drama", "Other"],
+      regionList: ["All", "Mainland China", "Hong Kong", "Taiwan", "USA", "South Korea", "Japan", "Thailand", "India", "France", "UK", "Germany", "Other"],
       filmList: [],
     }
   },

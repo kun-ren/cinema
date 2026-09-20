@@ -1,6 +1,6 @@
-//自定义的配置文件
+//Application configuration
 const config = {
-    //后端api地址
+    //Backend API URL
     API_URL: "http://localhost:8888/api",
 };
 

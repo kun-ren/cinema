@@ -5,7 +5,7 @@
       <div class="d1">403</div>
       <div class="d2">Sorry, you don't have access to this page.</div>
       <router-link to="/">
-        <el-button style="margin: 30px 118px" type="primary">返 回 首 页</el-button>
+        <el-button style="margin: 30px 118px" type="primary">Back to home</el-button>
       </router-link>
     </div>
   </div>

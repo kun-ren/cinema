@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 留言
+ * Messages
  */
 @Data
 @TableName("t_leaving_message")
@@ -16,12 +16,12 @@ public class LeavingMessage implements Serializable {
 
     private String id;
 
-    //用户ID
+    //User ID
     private String uid;
 
     private String reply;
 
-    //内容
+    //Content
     private String content;
 
     private String createAt;

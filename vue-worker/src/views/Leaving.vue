@@ -5,25 +5,25 @@
         <img class="av2" :src="item.user.avatar" alt="null">
         <div>
           <div class="d2">{{ item.user.nickname }}</div>
-          <div v-if="!item.user.nickname" class="d2">匿名用户</div>
+          <div v-if="!item.user.nickname" class="d2">Anonymous user</div>
           <div class="d3">{{ item.leavingMessage.content }}</div>
           <div class="d2">Time: {{ item.leavingMessage.createAt }}</div>
         </div>
       </div>
       <div class="reply">
-        <div class="d2">客服回复:</div>
+        <div class="d2">Support reply:</div>
         <div class="d3">{{ item.leavingMessage.reply }}</div>
       </div>
       <div class="reply">
-        <el-button @click="handleReply(item, index)" type="text">回复留言Reply</el-button>
+        <el-button @click="handleReply(item, index)" type="text">Reply</el-button>
       </div>
     </div>
 
-    <el-dialog title="回复留言" :visible.sync="dialogFormVisible">
+    <el-dialog title="Reply to message" :visible.sync="dialogFormVisible">
       <el-input type="textarea" :rows="8" v-model="form.reply" autocomplete="off"></el-input>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="submitReply">确 定 提 交</el-button>
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="submitReply">Submit</el-button>
       </div>
     </el-dialog>
 
@@ -67,7 +67,7 @@ export default {
           this.dialogFormVisible = false
           this.$message({
             type: 'success',
-            message: '回复留言成功'
+            message: 'Reply sent successfully'
           });
         }
       })

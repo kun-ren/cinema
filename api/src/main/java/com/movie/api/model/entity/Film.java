@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 电影
+ * Film
  */
 @Data
 @TableName("t_film")
@@ -20,28 +20,28 @@ public class Film implements Serializable {
 
     private String name;
 
-    //上映时间
+    //Release date
     private String releaseTime;
 
-    //类型
+    //Type
     private String type;
 
-    //状态
+    //Status
     private boolean status;
 
-    //地区 中国,美国,韩国 ......
+    //Region, such as China, USA, or South Korea
     private String region;
 
-    //电影简介
+    //Synopsis
     private String introduction;
 
-    //热度
+    //Popularity
     private Integer hot;
 
-    //封面图片
+    //Cover image
     private String cover;
 
-    //电影时长 单位：分钟
+    //Film duration in minutes
     private Integer duration;
 
 }

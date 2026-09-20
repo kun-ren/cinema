@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 影院客服
+ * Cinema support worker
  */
 @Data
 @TableName("t_worker")
@@ -30,10 +30,10 @@ public class Worker implements Serializable {
 
     private String avatar;
 
-    //入职
+    //Employed
     private boolean entry;
 
-    //部门
+    //Department
     private String department;
 
     private String createAt;

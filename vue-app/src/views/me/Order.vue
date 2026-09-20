@@ -1,36 +1,36 @@
 <template>
   <div style="width: 100%">
-    <h3 style="letter-spacing: 1px;font-weight: 400;padding-bottom: 20px">我的订单</h3>
+    <h3 style="letter-spacing: 1px;font-weight: 400;padding-bottom: 20px">My orders</h3>
 
     <div v-loading="loading">
       <el-card v-for="(item, index) in orderList" :key="index" class="box-card">
         <div>
           <img class="item-film-img" alt="" :src="item.film.cover"/>
           <div style="float: left;">
-            <div class="item-film-name">《{{ item.film.name }}》</div>
-            <div class="item-film-seat">订购座位 : {{ item.order.seats }}</div>
-            <div class="item-film-time">下单时间 : {{ item.order.createAt }}</div>
-            <div v-if="item.order.status === 2" class="item-film-time">支付时间 : {{ item.order.payAt }}</div>
+            <div class="item-film-name">{{ item.film.name }}</div>
+            <div class="item-film-seat">Booked seats : {{ item.order.seats }}</div>
+            <div class="item-film-time">Ordered at : {{ item.order.createAt }}</div>
+            <div v-if="item.order.status === 2" class="item-film-time">Paid at : {{ item.order.payAt }}</div>
           </div>
           <el-button type="text"
                      @click="handlePay(item.order, index)"
                      v-if="item.order.status === 0"
                      style="line-height: 75px"
                      class="o1">
-            等待支付
+            Awaiting payment
           </el-button>
-          <el-tooltip class="item" effect="dark" content="请联系工作人员查询您的订单" placement="top">
-            <div v-if="item.order.status === 3" style="color: #E6A23C" class="o1">订单异常</div>
+          <el-tooltip class="item" effect="dark" content="Contact staff for help with your order" placement="top">
+            <div v-if="item.order.status === 3" style="color: #E6A23C" class="o1">Order issue</div>
           </el-tooltip>
-          <div v-if="item.order.status === 2" style="color: #67C23A" class="o1">支付成功</div>
-          <div v-if="item.order.status === 1" style="color: #F56C6C" class="o1">订单超时</div>
+          <div v-if="item.order.status === 2" style="color: #67C23A" class="o1">Paid</div>
+          <div v-if="item.order.status === 1" style="color: #F56C6C" class="o1">Payment timed out</div>
           <div class="o2">￥{{ item.order.price }}</div>
         </div>
       </el-card>
     </div>
 
     <el-dialog
-        title="扫码支付"
+        title="Scan to pay"
         :show-close="false"
         width="30%"
         :visible.sync="centerDialogVisible"
@@ -39,7 +39,7 @@
         <img class="c-img" src="../../assets/img/c.jpeg" alt="">
       </div>
       <span slot="footer" class="dialog-footer">
-    <el-button type="primary" @click="submitPay">支 付 成 功</el-button>
+    <el-button type="primary" @click="submitPay">Payment completed</el-button>
   </span>
     </el-dialog>
 
@@ -82,9 +82,9 @@ export default {
     },
 
     open(order, index) {
-      this.$confirm('请您仔细确认订单金额为' + order.price + '元, 是否继续?', '提示', {
-        confirmButtonText: '确认支付',
-        cancelButtonText: '取消支付',
+      this.$confirm('Please confirm the order total of ' + order.price + ' CNY. Continue?', 'Notice', {
+        confirmButtonText: 'Confirm payment',
+        cancelButtonText: 'Cancel payment',
         type: 'success',
         center: true
       }).then(() => {
@@ -94,7 +94,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'warning',
-          message: '用户已取消支付'
+          message: 'Payment canceled'
         });
       });
     },
@@ -106,7 +106,7 @@ export default {
         if (res.success) {
           this.$message({
             type: 'success',
-            message: '恭喜你支付成功!'
+            message: 'Payment successful!'
           });
         }
       })

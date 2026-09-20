@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "用户购物车接口")
+@Api(tags = "Shopping cart API")
 @RequestMapping("/api/cart")
 public class CartController {
 
@@ -19,19 +19,19 @@ public class CartController {
     private CartService cartService;
 
     @PostMapping
-    @ApiOperation("添加购物车")
+    @ApiOperation("Add to cart")
     public void save(@RequestBody Cart cart) throws Exception {
         cartService.save(cart);
     }
 
     @GetMapping("")
-    @ApiOperation("根据用户id查询购物车")
+    @ApiOperation("List cart items by user ID")
     public List<CartVO> list(@RequestParam String uid) {
         return cartService.findAllByUserId(uid);
     }
 
     @DeleteMapping("")
-    @ApiOperation("删除购物车")
+    @ApiOperation("Delete cart item")
     public void delete(String id) {
         cartService.deleteById(id);
     }

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 上传的图片
+ * Uploaded images
  */
 @Data
 @TableName("t_upload")
@@ -20,7 +20,7 @@ public class Upload implements Serializable {
 
     private byte[] bytes;
 
-    //文件的md5值
+    //File MD5 hash
     private String md5;
 
 }

@@ -40,20 +40,21 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order create(Cart cart) throws Exception {
         List<Integer> seats = arrangementService.getSeatsHaveSelected(cart.getAid());
-        String[] split = cart.getSeats().split("号");
+        // Accept comma-separated seats and legacy non-numeric separators.
+        String[] split = cart.getSeats().split("\\D+");
         for (String s : split) {
-            if (seats.contains(Integer.parseInt(s))) throw new Exception("影片在购物车中躺了太长时间了，座位已被其他用户预订并支付了");
+            if (seats.contains(Integer.parseInt(s))) throw new Exception("These seats have already been booked by another customer. Please select different seats");
         }
         Order order = new Order();
-        //生成订单id
+        //Generate an order ID
         order.setId(UUID.randomUUID().toString());
-        //写入用户id
+        //Set the user ID
         order.setUid(cart.getUid());
-        //写入用户电话
+        //Set the customer phone number
         order.setPhone(cart.getPhone());
-        //写入场次id
+        //Set the screening ID
         order.setAid(cart.getAid());
-        //写入座位信息
+        //Set seat and status details
         order.setStatus(cart.getStatus());
         order.setSeats(cart.getSeats());
         if (cart.getStatus() == 2) order.setPayAt(DataTimeUtil.getNowTimeString());
@@ -61,7 +62,7 @@ public class OrderServiceImpl implements OrderService {
         order.setCreateAt(DataTimeUtil.getNowTimeString());
         orderMapper.insert(order);
 
-        //订了几个座位就添加多少热度
+        //Increase popularity by the number of booked seats
         Film film = filmMapper.selectById(arrangementService.findById(cart.getAid()).getFid());
         film.setHot(film.getHot() + split.length);
         filmMapper.updateById(film);
@@ -71,13 +72,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order pay(String id) throws Exception {
         Order order = orderMapper.selectById(id);
-        if (order == null) throw new Exception("不存在的订单id");
+        if (order == null) throw new Exception("Order ID does not exist");
 
         if (DataTimeUtil.parseTimeStamp(order.getCreateAt()) + OrderStatus.EXPIRATION_TIME
                 < System.currentTimeMillis()) {
             order.setStatus(OrderStatus.PAYMENT_FAILED);
             orderMapper.updateById(order);
-            throw new Exception("订单支付超时");
+            throw new Exception("Order payment has timed out");
         }
 
         order.setStatus(OrderStatus.PAYMENT_SUCCESSFUL);

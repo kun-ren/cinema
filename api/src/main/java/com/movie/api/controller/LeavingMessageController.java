@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "留言接口")
+@Api(tags = "Message API")
 @RequestMapping("/api/lm")
 public class LeavingMessageController {
 
@@ -20,25 +20,25 @@ public class LeavingMessageController {
     private LeavingMessageService leavingMessageService;
 
     @PostMapping("")
-    @ApiOperation(value = "新增留言接口")
+    @ApiOperation(value = "Create message")
     public void save(@RequestBody LeavingMessage leavingMessage) {
         leavingMessageService.save(leavingMessage);
     }
 
     @PutMapping("")
-    @ApiOperation("回复留言")
+    @ApiOperation("Reply to message")
     public void reply(@RequestBody LeavingMessage leavingMessage) {
         leavingMessageService.reply(leavingMessage);
     }
 
     @GetMapping("")
-    @ApiOperation("获取所有影院留言")
+    @ApiOperation("List all cinema messages")
     public List<LeavingMessageVO> list() {
         return leavingMessageService.findAll();
     }
 
     @GetMapping("/active")
-    @ApiOperation("获取活跃留言的用户")
+    @ApiOperation("List active commenters")
     public List<ActiveUserVO> findActiveUsers() {
         return leavingMessageService.findActiveUsers();
     }

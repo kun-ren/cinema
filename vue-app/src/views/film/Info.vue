@@ -1,16 +1,16 @@
 <template>
   <div>
-    <el-page-header @back="goBack" content="详情页面">
+    <el-page-header @back="goBack" content="Details page">
     </el-page-header>
-    <div style="font-weight: bolder;font-size: 25px;padding-top: 40px;padding-bottom: 40px">剧情简介</div>
+    <div style="font-weight: bolder;font-size: 25px;padding-top: 40px;padding-bottom: 40px">Synopsis</div>
     <div style="line-height: 30px;text-indent:2.5em;padding-top: 20px;padding-bottom: 20px"> {{film.introduction}}
     </div>
-    <div style="font-weight: bolder;font-size: 25px;padding-top: 40px;padding-bottom: 40px">电影评论</div>
+    <div style="font-weight: bolder;font-size: 25px;padding-top: 40px;padding-bottom: 40px">Film reviews</div>
     <div style="padding-right: 100px">
       <div class="item" v-for="item in evaluateList">
         <img alt="" style="float: left;width: 55px;height: 55px;border-radius: 50%" :src="item.user.avatar">
         <div class="header-name">
-          <div v-if="item.user.nickname===null" style="font-weight: 400;color: darkgrey; padding-left: 5px;">匿名用户</div>
+          <div v-if="item.user.nickname===null" style="font-weight: 400;color: darkgrey; padding-left: 5px;">Anonymous user</div>
           <div v-if="item.user.nickname!==null" style="font-weight: 400;color: darkgrey; padding-left: 5px;">
             {{ item.user.nickname }}
           </div>

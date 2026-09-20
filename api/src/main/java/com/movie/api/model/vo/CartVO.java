@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 购物车前端展示
+ * Shopping cart view model
  */
 @Data
 @AllArgsConstructor

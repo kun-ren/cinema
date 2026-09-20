@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 影院活动
+ * Cinema activities
  */
 @Data
 @TableName("t_activity")

@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 员工的每日工作
+ * Daily work updates
  */
 @Data
 @TableName("t_daily_work")
@@ -14,13 +14,13 @@ public class DailyWork implements Serializable {
 
     private String id;
 
-    //重要 一般 非常重要
+    //Important, normal, or urgent
     private int type;
 
-    //工作内容
+    //Work description
     private String content;
 
-    //上传时间
+    //Uploaded at
     private String createAt;
 
 }

@@ -8,9 +8,9 @@ spring:
     password: password
   cache:
     redis:
-      #使用前缀
+      #Use a key prefix
       use-key-prefix: true
-      #redis过期时间
+      #Redis cache expiration
       time-to-live: 60s
 mybatis-plus:
   global-config:

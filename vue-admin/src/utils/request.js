@@ -32,7 +32,7 @@ service.interceptors.response.use(
                 }
             } else {
                 Notification.error({
-                    title: '错误消息: ' + res.code,
+                    title: 'Error message: ' + res.code,
                     message: res.msg
                 });
             }

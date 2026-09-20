@@ -1,10 +1,10 @@
 <template>
   <div>
-    <el-page-header @back="goBack" content="电影购票">
+    <el-page-header @back="goBack" content="Buy film tickets">
     </el-page-header>
     <div style="width: 100%; height: 20px"></div>
     <div style="font-weight: bold;letter-spacing: 2px;font-size: 25px;color: red" v-if="list.length === 0">
-      影院还没有添加排片
+      No screenings have been scheduled
     </div>
     <div class="item" v-for="(item, index) in list" :key="index">
       <div class="item-des">
@@ -13,7 +13,7 @@
         <el-tag effect="plain">{{ item.type }}</el-tag>
       </div>
       <div class="item-btn">
-        <el-button type="danger" @click="handleSelectSeat(item.id)" round>选座购票</el-button>
+        <el-button type="danger" @click="handleSelectSeat(item.id)" round>Select seats</el-button>
       </div>
       <div class="item-price">￥{{ item.price }}</div>
     </div>
@@ -47,9 +47,9 @@ export default {
 
     handleSelectSeat(id) {
       if (!localStorage.getItem("uid")) {
-        this.$confirm('系统还没有检测到您的登陆信息, 是否去登录?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('You are not logged in. Go to login?', 'Notice', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           this.$router.push("/login")

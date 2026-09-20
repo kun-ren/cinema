@@ -12,12 +12,12 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
               <el-link :underline="false" href="/setting">
-                <i style="font-size: 15px; padding-right: 3px" class="el-icon-setting"></i>个人设置
+                <i style="font-size: 15px; padding-right: 3px" class="el-icon-setting"></i>Settings
               </el-link>
             </el-dropdown-item>
             <el-dropdown-item divided>
               <el-button type="text" @click="handleLogout">
-                <i style="font-size: 15px; padding-right: 3px" class="el-icon-switch-button"></i>退出登录
+                <i style="font-size: 15px; padding-right: 3px" class="el-icon-switch-button"></i>Log out
               </el-button>
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -31,12 +31,12 @@
           </el-badge>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item v-for="item in list" :key="item">{{ item.content }}</el-dropdown-item>
-            <el-dropdown-item v-if="list.length === 0">今日工作还没有上传</el-dropdown-item>
+            <el-dropdown-item v-if="list.length === 0">No work updates today</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
       <div class="header-icon">
-        <el-tooltip content="小小影院 - 管理系统" placement="top">
+        <el-tooltip content="Little Cinema - Management system" placement="top">
           <i style="font-size: 20px" class="el-icon-warning-outline"></i>
         </el-tooltip>
       </div>

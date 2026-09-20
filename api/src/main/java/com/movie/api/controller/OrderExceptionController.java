@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "订单异常上报接口")
+@Api(tags = "Order issue API")
 @RequestMapping("/api/oe")
 public class OrderExceptionController {
 
@@ -18,19 +18,19 @@ public class OrderExceptionController {
     private OrderExceptionService orderExceptionService;
 
     @PostMapping("")
-    @ApiOperation("添加异常订单")
+    @ApiOperation("Report order issue")
     public OrderException create(@RequestBody OrderException orderException) {
         return orderExceptionService.create(orderException);
     }
 
     @GetMapping("")
-    @ApiOperation("查询所有异常订单")
+    @ApiOperation("List all order issues")
     public List<OrderException> findAll() {
         return orderExceptionService.findAll();
     }
 
     @PutMapping("")
-    @ApiOperation("工作人员处理异常订单")
+    @ApiOperation("Resolve order issues")
     public void handle(@RequestBody OrderException orderException) {
         orderExceptionService.handleException(orderException);
     }

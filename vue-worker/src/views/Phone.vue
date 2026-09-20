@@ -4,7 +4,7 @@
         ref="filterTable"
         :data="list"
         style="width: 100%">
-      <el-table-column label="姓名" width="180">
+      <el-table-column label="Name" width="180">
         <template slot-scope="props">
           <img class="av" alt="null" :src="props.row.user.avatar"/>
           <div class="d1">{{ props.row.user.nickname }}</div>
@@ -12,19 +12,19 @@
       </el-table-column>
       <el-table-column
           prop="user.email"
-          label="邮箱">
+          label="Email">
       </el-table-column>
       <el-table-column
           prop="user.birthday"
-          label="生日">
+          label="Birthday">
       </el-table-column>
       <el-table-column
           prop="user.gender"
-          label="性别">
+          label="Gender">
       </el-table-column>
       <el-table-column
           prop="tag"
-          label="活跃程度"
+          label="Activity level"
           width="140">
         <template slot-scope="scope">
           <el-tag v-if="scope.$index===0" type="danger" effect="plain">Top 1

@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "电影接口")
+@Api(tags = "Film API")
 @RequestMapping("/api/film")
 public class FilmController {
 
@@ -18,13 +18,13 @@ public class FilmController {
     private FilmService filmService;
 
     @PostMapping("")
-    @ApiOperation(value = "保存电影")
+    @ApiOperation(value = "Save film")
     public void save(@RequestBody Film film) {
         filmService.save(film);
     }
 
     @GetMapping("")
-    @ApiOperation("列出所有电影")
+    @ApiOperation("List all films")
     public List<Film> list(String region, String type) {
         if (region != null && type != null) {
             return filmService.findByRegionAndType(region, type);
@@ -33,31 +33,31 @@ public class FilmController {
     }
 
     @GetMapping("/hot/{limit}")
-    @ApiOperation("获取热榜电影")
+    @ApiOperation("Get popular films")
     public List<Film> listHots(@PathVariable Integer limit) {
         return filmService.findHots(limit);
     }
 
     @GetMapping("/name/{name}")
-    @ApiOperation("搜索电影")
+    @ApiOperation("Search films")
     public List<Film> search(@PathVariable String name) {
         return filmService.findLikeName(name);
     }
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "根据id查找电影")
+    @ApiOperation(value = "Find film by ID")
     public Film findById(@PathVariable String id) {
         return filmService.findById(id);
     }
 
     @PutMapping("")
-    @ApiOperation(value = "更新电影")
+    @ApiOperation(value = "Update film")
     public void update(@RequestBody Film film) {
         filmService.update(film);
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "根据id删除电影")
+    @ApiOperation(value = "Delete film by ID")
     public void deleteById(@PathVariable String id) {
         filmService.deleteById(id);
     }

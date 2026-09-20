@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Authorization 授权 发放token
+ * Authenticate requests using JWT authorization tokens
  */
 public class AuthorizationFilter extends BasicAuthenticationFilter {
 
@@ -25,35 +25,35 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         super(authenticationManager);
     }
 
-    //确保在一次请求中只通过一次filter，而不会重复执行
+    //Apply the filter once per request
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-        //从Request Header 取出Token
+        //Read the token from the request header
         String token = request.getHeader(JwtTokenUtil.TOKEN_HEADER);
 
-        //Token为空放行
-        //如果接下来进入的URL不是公共的地址SpringSecurity会返回403的错误
+        //Continue without authentication when no token is supplied
+        //Protected endpoints enforce their configured authorization rules
         if (token == null || "null".equals(token)) {
             chain.doFilter(request, response);
             return;
         }
 
-        //判断JWT Token是否过期
+        //Check whether the JWT has expired
         if (JwtTokenUtil.isExpiration(token)) {
-            ResponseUtil.writeJson(response, new ResponseResult<>(403, "令牌已过期, 请重新登录"));
+            ResponseUtil.writeJson(response, new ResponseResult<>(403, "Token expired. Please log in again"));
             return;
         }
 
-        //解析JWT获取用户信息
+        //Parse the JWT to read user information
         String username = JwtTokenUtil.getUsername(token);
         ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
         for (String role : JwtTokenUtil.getTokenRoles(token)) {
             authorities.add(new SimpleGrantedAuthority(role));
         }
 
-        //向SpringSecurity的Context中加入认证信息
+        //Add authentication to the Spring Security context
         SecurityContextHolder.getContext().setAuthentication(
                 new UsernamePasswordAuthenticationToken(username, null, authorities));
         super.doFilterInternal(request, response, chain);

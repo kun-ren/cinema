@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "电影评价接口")
+@Api(tags = "Film review API")
 @RequestMapping("/api/fe")
 public class FilmEvaluateController {
 
@@ -19,13 +19,13 @@ public class FilmEvaluateController {
     private FilmEvaluateService filmEvaluateService;
 
     @PostMapping("")
-    @ApiOperation("评论电影")
+    @ApiOperation("Review film")
     public void save(@RequestBody FilmEvaluate filmEvaluate) throws Exception {
         filmEvaluateService.save(filmEvaluate);
     }
 
     @GetMapping("")
-    @ApiOperation("获取电影评论")
+    @ApiOperation("Get film reviews")
     public List<FilmEvaluateVO> list(@RequestParam(name = "fid") String fid) {
         if (fid != null) {
             return filmEvaluateService.findAllByFilmId(fid);
@@ -34,13 +34,13 @@ public class FilmEvaluateController {
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("根据id删除评论")
+    @ApiOperation("Delete review by ID")
     public void remove(@PathVariable String id) {
         filmEvaluateService.deleteById(id);
     }
 
     @DeleteMapping("")
-    @ApiOperation("删除该电影的所有评分")
+    @ApiOperation("Delete all ratings for this film")
     public void removeAll(@RequestParam(name = "fid") String fid) {
         filmEvaluateService.deleteAllByFilmId(fid);
     }

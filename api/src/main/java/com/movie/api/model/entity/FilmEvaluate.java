@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 电影评价
+ * Film reviews
  */
 @Data
 @TableName("t_film_evaluate")
@@ -16,16 +16,16 @@ public class FilmEvaluate implements Serializable {
 
     private String id;
 
-    //电影id
+    //Film ID
     private String fid;
 
-    //用户id
+    //User ID
     private String uid;
 
-    //星级
+    //Stars
     private Integer star;
 
-    //评语
+    //Review
     private String comment;
 
     private String createAt;

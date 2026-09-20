@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 首页海报
+ * Homepage posters
  */
 @Data
 @TableName("t_poster")
@@ -18,7 +18,7 @@ public class Poster implements Serializable {
 
     private String url;
 
-    //上架 下架
+    //Published or unpublished
     private boolean status;
 
     private String createAt;

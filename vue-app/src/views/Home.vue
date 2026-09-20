@@ -18,7 +18,7 @@
               <span class="panel-arrow panel-arrow-orange"></span>
             </span>
             <span class="panel-title">
-              <span class="textcolor_orange">热门榜单Top10</span>
+              <span class="textcolor_orange">Top 10 popular films</span>
             </span>
           </div>
           <div class="panel-content">
@@ -33,10 +33,10 @@
                     <div class="ranking-top-right-main">
                       <span class="ranking-top-moive-name">{{ top1.name }}</span>
 
-                      <p class="ranking-release-time">上映时间：{{ top1.releaseTime }}</p>
+                      <p class="ranking-release-time">Release date: {{ top1.releaseTime }}</p>
 
                       <p class="ranking-top-wish">
-                        <span class="stonefont">热度值: </span>{{ top1.hot }}
+                        <span class="stonefont">Popularity: </span>{{ top1.hot }}
                       </p>
                     </div>
                   </div>
@@ -49,7 +49,7 @@
                   <span class="img-link">
                     <img style="height: 180px" class="ranking-img default-img" :alt="top2.name" :src="top2.cover"></span>
                   <div class="name-link ranking-movie-name">{{ top2.name }}</div>
-                  <span class="ranking-num-info"><span class="stonefont">热度值: </span>{{ top2.hot }}</span>
+                  <span class="ranking-num-info"><span class="stonefont">Popularity: </span>{{ top2.hot }}</span>
                 </router-link>
               </li>
 
@@ -59,7 +59,7 @@
                   <span class="img-link">
                     <img style="height: 180px" class="ranking-img default-img" :alt="top3.name" :src="top3.cover"></span>
                   <div class="name-link ranking-movie-name">{{ top3.name }}</div>
-                  <span class="ranking-num-info"><span class="stonefont">热度值: </span>{{ top3.hot }}</span>
+                  <span class="ranking-num-info"><span class="stonefont">Popularity: </span>{{ top3.hot }}</span>
                 </router-link>
               </li>
 
@@ -68,7 +68,7 @@
                   <span class="normal-link">
                     <i class="ranking-index">{{ index + 4 }}</i>
                     <span class="ranking-movie-name">{{ item.name }}</span>
-                    <span class="ranking-num-info"><span class="stonefont">热度值: </span>{{ item.hot }}</span>
+                    <span class="ranking-num-info"><span class="stonefont">Popularity: </span>{{ item.hot }}</span>
                   </span>
                 </router-link>
               </li>
@@ -85,7 +85,7 @@
         <div class="panel">
           <div class="panel-header">
             <span class="panel-title">
-              <span class="textcolor_orange">正在热播  ( {{ filmList.length }} )</span>
+              <span class="textcolor_orange">Now showing  ( {{ filmList.length }} )</span>
             </span>
           </div>
           <div class="panel-content">
@@ -96,7 +96,7 @@
                     <div class="movie-poster">
                       <img class="poster-default" alt=""
                            :src="item.cover">
-                      <img class="movie-poster-img" alt="不要先生与好的女士海报封面"
+                      <img class="movie-poster-img" alt="Mr. No and Miss Yes poster"
                            :src="item.cover">
                       <div class="movie-overlay movie-overlay-bg">
                         <div class="movie-info">
@@ -104,10 +104,10 @@
                         </div>
                       </div>
                     </div>
-                    <div class="movie-detail movie-wish"><span class="stonefont">123</span>人想看</div>
+                    <div class="movie-detail movie-wish"><span class="stonefont">123</span> people interested</div>
                     <div class="movie-ver"></div>
                   </div>
-                  <div class="movie-detail movie-rt">{{ item.releaseTime }} 上映</div>
+                  <div class="movie-detail movie-rt">{{ item.releaseTime }} Released</div>
                 </router-link>
               </dd>
             </dl>

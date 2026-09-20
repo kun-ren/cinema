@@ -1,17 +1,17 @@
 package com.movie.api.constant;
 
 /**
- * 电影状态
+ * Film status
  */
 public final class FilmStatus {
 
-    //上架
+    //Published
     public final static Integer ON_SHELF = 2;
 
-    //审核
+    //Pending review
     public final static Integer TO_EXAMINE = 1;
 
-    //下架
+    //Unpublished
     public final static Integer OFF_SHELF = 0;
 
 }

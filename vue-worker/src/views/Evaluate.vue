@@ -1,13 +1,13 @@
 <template>
   <div style="padding: 40px">
     <el-table :data="evaluateList">
-      <el-table-column property="createAt" label="日期" width="250"></el-table-column>
-      <el-table-column property="content" label="评语"></el-table-column>
+      <el-table-column property="createAt" label="Date" width="250"></el-table-column>
+      <el-table-column property="content" label="Review"></el-table-column>
       <el-table-column property="type" width="150">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.type==='非常满意'" type="success">非常满意</el-tag>
-          <el-tag v-if="scope.row.type==='满意'" type="info">满意</el-tag>
-          <el-tag v-if="scope.row.type==='不满意'" type="danger">不满意</el-tag>
+          <el-tag v-if="scope.row.type==='Very satisfied'" type="success">Very satisfied</el-tag>
+          <el-tag v-if="scope.row.type==='Satisfied'" type="info">Satisfied</el-tag>
+          <el-tag v-if="scope.row.type==='Dissatisfied'" type="danger">Dissatisfied</el-tag>
         </template>
       </el-table-column>
     </el-table>

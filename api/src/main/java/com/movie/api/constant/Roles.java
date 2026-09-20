@@ -3,30 +3,30 @@ package com.movie.api.constant;
 import java.util.List;
 
 /**
- * 权限常量
- * SpringSecurity 要求加上 "ROLE_" 前缀
+ * Role constants
+ * Spring Security requires the "ROLE_" prefix
  */
 public final class Roles {
 
-    //管理员
+    //Administrator
     public final static String ROLE_ADMIN = "ROLE_ADMIN";
 
-    //普通用户
+    //Customer
     public final static String ROLE_USER = "ROLE_USER";
 
-    //普通员工
+    //Worker
     public final static String ROLE_WORKER = "ROLE_WORKER";
 
-    //查询用户
+    //Find user
     public final static String ROLE_FIND_USER = "ROLE_FIND_USER";
 
-    //新增电影
+    //Add film
     public final static String ROLE_ADD_FILM = "ROLE_ADD_FILM";
 
-    //添加拍片
+    //Add screening
     public final static String ROLE_ADD_ARRANGEMENT = "ROLE_ADD_ARRANGEMENT";
 
-    //删除电影
+    //Delete film
     public final static String ROLE_DELETE_FILM = "ROLE_DELETE_FILM";
 
     public final static String[] roles = {

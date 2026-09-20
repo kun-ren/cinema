@@ -23,26 +23,26 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public void create(Registration registration) throws Exception {
-        //获取要参加的活动id
+        //Get the selected activity ID
         String activityId = registration.getAid();
         Activity activity = activityMapper.selectById(activityId);
-        if (activity == null) throw new Exception("请求参数错误");
+        if (activity == null) throw new Exception("Invalid request parameters");
 
-        //查找用户是否已经参加
+        //Check whether the user is already registered
         QueryWrapper<Registration> wrapper = new QueryWrapper<>();
         wrapper.in("aid", activityId);
         wrapper.in("uid", registration.getUid());
         if (registrationMapper.selectOne(wrapper) != null) {
-            throw new Exception("您已经参加过此活动哦");
+            throw new Exception("You have already registered for this activity");
         }
 
-        //判断活动是否未开始
+        //Check whether the activity has started
         if (DataTimeUtil.isAfterNow(activity.getStartTime())) {
-            throw new Exception("活动还没有开始");
+            throw new Exception("This activity has not started yet");
         }
-        //判断时候结束
+        //Check whether the activity has ended
         if (!DataTimeUtil.isAfterNow(activity.getEndTime())) {
-            throw new Exception("活动已经结束了");
+            throw new Exception("This activity has ended");
         }
         activity.setNumber(activity.getNumber() + 1);
         activityMapper.updateById(activity);

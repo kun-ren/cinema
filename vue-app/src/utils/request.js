@@ -26,7 +26,7 @@ service.interceptors.response.use(
 
         } else {
             Notification.error({
-                title: '错误提示: ' + res.code,
+                title: 'Error: ' + res.code,
                 message: res.msg
             });
         }

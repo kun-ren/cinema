@@ -1,39 +1,39 @@
 <template>
   <div class="main">
-    <h3 style="letter-spacing: 1px;font-weight: 400;padding-bottom: 20px">基本设置</h3>
+    <h3 style="letter-spacing: 1px;font-weight: 400;padding-bottom: 20px">Profile settings</h3>
 
     <div>
-      <el-form style="width: 350px;float: left" label-position="top" ref="form" :model="worker" label-width="80px">
-        <el-form-item style="padding: 0" label="用户名">
+      <el-form style="width: 350px;float: left" label-position="top" ref="form" :model="worker" label-width="140px">
+        <el-form-item style="padding: 0" label="Username">
           <el-input v-model="worker.username"></el-input>
         </el-form-item>
-        <el-form-item style="padding: 0" label="昵称">
+        <el-form-item style="padding: 0" label="Nickname">
           <el-input v-model="worker.nickname"></el-input>
         </el-form-item>
-        <el-form-item style="padding: 0" label="密码">
+        <el-form-item style="padding: 0" label="Password">
           <el-input type="password" v-model="worker.password"></el-input>
         </el-form-item>
-        <el-form-item label="性别">
+        <el-form-item label="Gender">
           <el-radio-group v-model="worker.gender">
-            <el-radio label="男生"></el-radio>
-            <el-radio label="女生"></el-radio>
+            <el-radio label="Male"></el-radio>
+            <el-radio label="Female"></el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item style="padding: 0" label="电话号码">
+        <el-form-item style="padding: 0" label="Phone number">
           <el-input v-model="worker.phone"></el-input>
         </el-form-item>
-        <el-form-item label="*入职部门">
+        <el-form-item label="*Department">
           <el-radio-group style="width: 600px" v-model="worker.department">
-            <el-radio label="客服部"></el-radio>
-            <el-radio label="运营部"></el-radio>
-            <el-radio label="宣传部"></el-radio>
-            <el-radio label="策划部"></el-radio>
-            <el-radio label="人事部"></el-radio>
-            <el-radio label="监管部"></el-radio>
+            <el-radio label="Customer Support"></el-radio>
+            <el-radio label="Operations"></el-radio>
+            <el-radio label="Marketing"></el-radio>
+            <el-radio label="Planning"></el-radio>
+            <el-radio label="Human Resources"></el-radio>
+            <el-radio label="Supervision"></el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item style="padding-top: 20px">
-          <el-button type="primary" @click="onSubmit">更新基本信息</el-button>
+          <el-button type="primary" @click="onSubmit">Update profile</el-button>
         </el-form-item>
       </el-form>
       <div>
@@ -49,9 +49,9 @@
             multiple
             :limit="1">
           <el-button style="width: 150px" size="small" type="primary">
-            <i class="el-icon-upload2"></i> 点击上传
+            <i class="el-icon-upload2"></i> Click to upload
           </el-button>
-          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
+          <div slot="tip" class="el-upload__tip">Only upload jpg/png files</div>
         </el-upload>
       </div>
     </div>
@@ -96,7 +96,7 @@ export default {
         if (res.success) {
           this.$message({
             type: 'success',
-            message: '员工基本信息更新成功!'
+            message: 'Worker profile updated successfully!'
           });
         }
       })
@@ -108,7 +108,7 @@ export default {
         if (res.success) {
           this.$message({
             type: 'success',
-            message: '头像上传成功!'
+            message: 'Avatar uploaded successfully!'
           });
         }
       })

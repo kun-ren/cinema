@@ -10,7 +10,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * swagger配置
+ * Swagger configuration
  */
 @Configuration
 @EnableSwagger2
@@ -23,7 +23,7 @@ public class SwaggerConfiguration {
                 .apis(RequestHandlerSelectors.basePackage("com.movie.api.controller"))
                 .paths(PathSelectors.any())
                 .build()
-                .apiInfo(new ApiInfoBuilder().title("movie电影系统 - api文档").version("v1.0").build());
+                .apiInfo(new ApiInfoBuilder().title("Little Cinema - API documentation").version("v1.0").build());
     }
 
 }

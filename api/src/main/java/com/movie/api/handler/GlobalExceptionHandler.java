@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * 捕获controller异常
- * controller抛出异常执行下边的函数
- * 返回Response写入ApiResult
+ * Catch exceptions raised by controllers.
+ * Handle controller exceptions with the methods below.
+ * Return errors using the standard response envelope.
  */
 @ResponseBody
 @RestControllerAdvice
@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     @DisableBaseResponse
     public Object handleException(Exception e) {
         if (e.getClass().equals(AccessDeniedException.class)){
-            return new ResponseResult<>(403, "你没有访问权限");
+            return new ResponseResult<>(403, "You do not have permission to access this resource");
         }
         logger.error(e.getMessage());
         return new ResponseResult<>(400, e.getMessage());

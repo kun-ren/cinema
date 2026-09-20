@@ -1,55 +1,55 @@
 <template>
   <div style="padding: 40px">
-    <el-button @click="dialogFormVisible = true" plain>添加今日工作</el-button>
+    <el-button @click="dialogFormVisible = true" plain>Add work update</el-button>
     <el-table
         v-loading="loading"
         :data="list"
         style="width: 100%;margin-top: 20px">
       <el-table-column
           prop="createAt"
-          label="添加时间"
+          label="Added at"
           width="220">
       </el-table-column>
-      <el-table-column label="级别" width="150">
+      <el-table-column label="Priority" width="150">
         <template slot-scope="props">
           <el-tag type="info" v-if="props.row.type === 1" effect="dark">
-            普通
+            Normal
           </el-tag>
           <el-tag type="success" v-if="props.row.type === 2" effect="dark">
-            重要
+            Important
           </el-tag>
           <el-tag type="danger" v-if="props.row.type === 3" effect="dark">
-            非常重要
+            Urgent
           </el-tag>
         </template>
       </el-table-column>
       <el-table-column
           prop="content"
-          label="主要内容">
+          label="Content">
       </el-table-column>
-      <el-table-column width="150" label="操作">
+      <el-table-column width="150" label="Actions">
         <template slot-scope="props">
-          <el-button @click="handleDelete(props.$index)" size="small" type="danger" plain>删 除</el-button>
+          <el-button @click="handleDelete(props.$index)" size="small" type="danger" plain>Delete</el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+    <el-dialog title="Add daily work" :visible.sync="dialogFormVisible">
       <el-form :model="form">
-        <el-form-item label="工作级别" label-width="120px">
-          <el-select v-model="form.type" placeholder="请选择活动区域">
-            <el-option label="普通" value="1"></el-option>
-            <el-option label="重要" value="2"></el-option>
-            <el-option label="非常重要" value="3"></el-option>
+        <el-form-item label="Priority" label-width="150px">
+          <el-select v-model="form.type" placeholder="Select a priority">
+            <el-option label="Normal" value="1"></el-option>
+            <el-option label="Important" value="2"></el-option>
+            <el-option label="Urgent" value="3"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item style="padding-right: 100px" label="主要内容" label-width="120px">
+        <el-form-item style="padding-right: 100px" label="Content" label-width="150px">
           <el-input :rows="8" type="textarea" v-model="form.content"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="saveDailyWork">确 定 保 存</el-button>
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="saveDailyWork">Save</el-button>
       </div>
     </el-dialog>
 
@@ -95,7 +95,7 @@ export default {
         this.loadList()
         this.$message({
           type: 'success',
-          message: '保存成功!'
+          message: 'Saved successfully!'
         });
       })
     },
@@ -106,7 +106,7 @@ export default {
         this.loadList()
         this.$message({
           type: 'success',
-          message: '删除成功!'
+          message: 'Deleted successfully!'
         });
       })
     },

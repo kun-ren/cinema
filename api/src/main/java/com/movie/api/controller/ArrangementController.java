@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@Api(tags = "电影排片场次接口")
+@Api(tags = "Screening API")
 @RequestMapping("/api/arrangement")
 public class ArrangementController {
 
@@ -25,31 +25,31 @@ public class ArrangementController {
     private FilmService filmService;
 
     @PostMapping("")
-    @ApiOperation("新增电影场次")
+    @ApiOperation("Create screening")
     public void save(@RequestBody Arrangement arrangement) {
         arrangementService.save(arrangement);
     }
 
     @PutMapping("")
-    @ApiOperation("修改排片信息")
+    @ApiOperation("Update screening details")
     public Arrangement update(@RequestBody Arrangement arrangement) {
         return arrangementService.Update(arrangement);
     }
 
     @DeleteMapping("")
-    @ApiOperation("根据id删除排片")
+    @ApiOperation("Delete screening by ID")
     public void delete(@RequestParam String id) {
         arrangementService.deleteById(id);
     }
 
     @GetMapping("")
-    @ApiOperation("列出电影排片")
+    @ApiOperation("List screenings")
     public List<Arrangement> list() {
         return arrangementService.findAll();
     }
 
     @GetMapping("/{id}")
-    @ApiOperation("查询拍片")
+    @ApiOperation("Find screening")
     public Map<String, Object> findById(@PathVariable String id) {
         HashMap<String, Object> map = new HashMap<>();
         Arrangement arrangement = arrangementService.findById(id);
@@ -59,13 +59,13 @@ public class ArrangementController {
     }
 
     @GetMapping("/getSeats")
-    @ApiOperation("获取座位情况")
+    @ApiOperation("Get booked seats")
     public List<Integer> getSeats(String id) {
         return arrangementService.getSeatsHaveSelected(id);
     }
 
     @GetMapping("/film/{fid}")
-    @ApiOperation("查询某个电影的所有拍片")
+    @ApiOperation("List screenings for a film")
     public ArrangementVO findByFilmId(@PathVariable String fid) {
         return arrangementService.findByFilmId(fid);
     }

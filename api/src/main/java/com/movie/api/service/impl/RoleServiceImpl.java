@@ -26,7 +26,7 @@ public class RoleServiceImpl implements RoleService {
         wrapper.in("wid", role.getWid());
         wrapper.in("value", role.getValue());
         if (roleMapper.selectOne(wrapper) != null) {
-            throw new Exception("该员工已拥有该权限, 请不要重复添加");
+            throw new Exception("This worker already has this permission. Please do not add it again");
         }
         role.setId(UUID.randomUUID().toString());
         role.setCreateAt(DataTimeUtil.getNowTimeString());
@@ -37,7 +37,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void deleteById(String id) throws Exception {
         Role role = roleMapper.selectById(id);
-        if (role.getValue().equals(Roles.ROLE_WORKER)) throw new Exception("员工的基本权限不能删除");
+        if (role.getValue().equals(Roles.ROLE_WORKER)) throw new Exception("The basic worker role cannot be removed");
         roleMapper.deleteById(id);
     }
 

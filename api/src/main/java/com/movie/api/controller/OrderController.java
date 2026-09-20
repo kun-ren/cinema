@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "订单接口")
+@Api(tags = "Order API")
 @RequestMapping("/api/order")
 public class OrderController {
 
@@ -20,31 +20,31 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("")
-    @ApiOperation(value = "创建订单")
+    @ApiOperation(value = "Create order")
     public void save(@RequestBody Cart cart) throws Exception {
         orderService.create(cart);
     }
 
     @GetMapping("")
-    @ApiOperation(value = "查询所有订单")
+    @ApiOperation(value = "List all orders")
     public List<OrderVO> findAll() {
         return orderService.findAll();
     }
 
     @PutMapping("")
-    @ApiOperation(value = "查询所有订单")
+    @ApiOperation(value = "Update order")
     public void update(@RequestBody Order order) {
         orderService.update(order);
     }
 
     @GetMapping("/user/{id}")
-    @ApiOperation(value = "查询用户订单")
+    @ApiOperation(value = "List user orders")
     public List<OrderVO> findByUser(@PathVariable String id) {
         return orderService.findByUser(id);
     }
 
     @GetMapping("/pay")
-    @ApiOperation(value = "支付订单")
+    @ApiOperation(value = "Pay for order")
     public Order save(String id) throws Exception {
         return orderService.pay(id);
     }

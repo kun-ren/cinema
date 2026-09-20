@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@Api(tags = "管理员接口")
+@Api(tags = "Administrator API")
 @RequestMapping("/api/admin")
 public class AdminController {
 
@@ -19,7 +19,7 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping("/login")
-    @ApiOperation("管理员登陆")
+    @ApiOperation("Administrator login")
     public Map<String, String> login(@RequestBody LoginDto loginDto) throws Exception {
         HashMap<String, String> map = new HashMap<>();
         map.put("token", adminService.login(loginDto));

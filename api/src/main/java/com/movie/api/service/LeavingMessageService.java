@@ -15,7 +15,7 @@ public interface LeavingMessageService {
 
     List<LeavingMessageVO> findAll();
 
-    //获取活跃留言的用户
+    //List active commenters
     List<ActiveUserVO> findActiveUsers();
 
 }

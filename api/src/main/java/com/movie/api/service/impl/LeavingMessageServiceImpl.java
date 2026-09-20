@@ -59,7 +59,7 @@ public class LeavingMessageServiceImpl implements LeavingMessageService {
                     new QueryWrapper<LeavingMessage>().in("uid", user.getId())).size());
             result.add(activeUserVO);
         }
-        //按留言数量排序
+        //Sort by message count
         result.sort((v1, v2) -> v2.getNumber().compareTo(v1.getNumber()));
         return result;
     }

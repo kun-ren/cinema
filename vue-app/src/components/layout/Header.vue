@@ -3,13 +3,13 @@
     <div style="height: 70px;width: 100%">
       <div class="header-logo">
         <img style="width: 50px; height: 50px;float: left" src="../../assets/img/logo.png" alt=""/>
-        <div class="header-logo-text">小小影院</div>
+        <div class="header-logo-text">Little Cinema</div>
       </div>
       <div class="header-links">
-        <el-link href="/" class="header-link" :underline="false">首页</el-link>
-        <el-link href="/films?region=全部&type=全部" class="header-link" :underline="false">电影</el-link>
-        <el-link href="/active" class="header-link" :underline="false">活动</el-link>
-        <el-link href="/leaving" class="header-link" :underline="false">留言</el-link>
+        <el-link href="/" class="header-link" :underline="false">Home</el-link>
+        <el-link href="/films?region=All&type=All" class="header-link" :underline="false">Film</el-link>
+        <el-link href="/active" class="header-link" :underline="false">Activity</el-link>
+        <el-link href="/leaving" class="header-link" :underline="false">Messages</el-link>
       </div>
 
       <div class="header-search">
@@ -17,7 +17,7 @@
             style="width: 250px"
             v-model="state"
             :fetch-suggestions="querySearchAsync"
-            placeholder="请输入电影名"
+            placeholder="Enter a film title"
             @select="handleSelect"
         />
       </div>
@@ -25,7 +25,7 @@
       <el-link v-if="!isLogin" href="/login" style="float: right;padding-top: 23px;padding-right: 50px"
                class="header-link"
                :underline="false">
-        登录
+        Log in
       </el-link>
       <el-dropdown v-if="isLogin" style="float: right;padding-right: 10px">
         <el-button type="text">
@@ -37,22 +37,22 @@
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>
             <el-link :underline="false" href="/me/cart" style="padding-right: 7px">
-              <i style="font-size: 15px; padding-right: 3px" class="el-icon-shopping-cart-2"></i>购物车
+              <i style="font-size: 15px; padding-right: 3px" class="el-icon-shopping-cart-2"></i>Shopping cart
             </el-link>
           </el-dropdown-item>
           <el-dropdown-item>
             <el-link :underline="false" href="/me/order" style="padding-right: 7px">
-              <i style="font-size: 15px; padding-right: 3px" class="el-icon-s-order"></i>我的订单
+              <i style="font-size: 15px; padding-right: 3px" class="el-icon-s-order"></i>My orders
             </el-link>
           </el-dropdown-item>
           <el-dropdown-item>
             <el-link :underline="false" href="/me/setting" style="padding-right: 7px">
-              <i style="font-size: 15px; padding-right: 3px" class="el-icon-user-solid"></i>个人设置
+              <i style="font-size: 15px; padding-right: 3px" class="el-icon-user-solid"></i>Settings
             </el-link>
           </el-dropdown-item>
           <el-dropdown-item divided>
             <el-button type="text" @click="handleLogout" :underline="false">
-              <i style="font-size: 15px; padding-right: 3px" class="el-icon-switch-button"></i>退出登录
+              <i style="font-size: 15px; padding-right: 3px" class="el-icon-switch-button"></i>Log out
             </el-button>
           </el-dropdown-item>
         </el-dropdown-menu>

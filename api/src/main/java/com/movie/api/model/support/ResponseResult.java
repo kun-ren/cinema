@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@ApiModel(value = "api返回结果")
+@ApiModel(value = "API response")
 @AllArgsConstructor
 public class ResponseResult<T> {
 
@@ -24,7 +24,7 @@ public class ResponseResult<T> {
         this.data = null;
     }
 
-    //不附带msg返回数据
+    //Return data without a message
     public ResponseResult(T data) {
         this.code = 200;
         this.success = true;
@@ -32,7 +32,7 @@ public class ResponseResult<T> {
         this.data = data;
     }
 
-    //默认附带msg返回数据
+    //Return data with a message
     public ResponseResult(String msg, T data) {
         this.code = 200;
         this.success = true;
@@ -40,7 +40,7 @@ public class ResponseResult<T> {
         this.data = data;
     }
 
-    //默认的错误返回
+    //Default error response
     public ResponseResult(Integer code, String msg) {
         this.code = code;
         this.success = false;

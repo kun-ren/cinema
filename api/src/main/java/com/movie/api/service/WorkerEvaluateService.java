@@ -10,10 +10,10 @@ public interface WorkerEvaluateService {
 
     void deleteById(String id);
 
-    //删除该客服的所有评价
+    //Delete all reviews for this support worker
     void deleteAllByWid(String wid);
 
-    //根据客服id查询他的所有评价
+    //List all reviews by support worker ID
     List<WorkerEvaluate> findByWorkerId(String wid);
 
 }

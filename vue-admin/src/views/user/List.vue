@@ -6,55 +6,55 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="用户名">
+            <el-form-item label="Username">
               <span>{{ props.row.username }}</span>
             </el-form-item>
-            <el-form-item label="昵称">
+            <el-form-item label="Nickname">
               <span>{{ props.row.nickname }}</span>
             </el-form-item>
-            <el-form-item label="密码">
+            <el-form-item label="Password">
               <el-button type="text" @click="openUpdatePassword(props.row)">
-                <i class="el-icon-edit"></i>编辑密码
+                <i class="el-icon-edit"></i>Change password
               </el-button>
             </el-form-item>
-            <el-form-item label="邮箱">
+            <el-form-item label="Email">
               <span>{{ props.row.email }}</span>
             </el-form-item>
-            <el-form-item label="性别">
+            <el-form-item label="Gender">
               <span>{{ props.row.gender }}</span>
             </el-form-item>
-            <el-form-item label="生日">
+            <el-form-item label="Birthday">
               <span>{{ props.row.birthday }}</span>
             </el-form-item>
-            <el-form-item label="个人简介">
+            <el-form-item label="Biography">
               <span>{{ props.row.info }}</span>
             </el-form-item>
-            <el-form-item label="更新时间">
+            <el-form-item label="Updated at">
               <span>{{ props.row.updateAt }}</span>
             </el-form-item>
-            <el-form-item label="用户头像 URL">
+            <el-form-item label="User avatar URL">
               <a target="_blank" :href="props.row.avatar">{{ props.row.avatar }}</a>
             </el-form-item>
           </el-form>
         </template>
       </el-table-column>
       <el-table-column
-          label="用户 ID"
+          label="User ID"
           width="430"
           prop="id">
       </el-table-column>
       <el-table-column
-          label="用户名"
+          label="Username"
           width="200"
           prop="username">
       </el-table-column>
       <el-table-column
-          label="昵称"
+          label="Nickname"
           width="200"
           prop="nickname">
       </el-table-column>
       <el-table-column
-          label="注册时间"
+          label="Registered at"
           prop="createAt">
       </el-table-column>
 
@@ -83,35 +83,35 @@ export default {
   methods: {
 
     openUpdatePassword(user) {
-      this.$prompt('请输入新的密码', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$prompt('Enter a new password', 'Notice', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
       }).then(({value}) => {
         if (!value) {
           this.$message({
             type: 'danger',
-            message: '密码不能为空'
+            message: 'Password is required'
           });
           return
         }
         if (value.length < 6) {
           this.$message({
             type: 'danger',
-            message: '请输入不少于6位的密码'
+            message: 'Enter a password with at least 6 characters'
           });
           return
         }
         user.password = value
         UpdateUser(user).then(res => {
           this.$message({
-            message: '账号密码修改成功',
+            message: 'Password changed successfully',
             type: 'success',
           });
         })
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '取消修改'
+          message: 'Changes canceled'
         });
       });
     }
@@ -127,7 +127,7 @@ export default {
 }
 
 .demo-table-expand label {
-  width: 90px;
+  width: 150px;
   color: #99a9bf;
 }
 

@@ -7,58 +7,58 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="用户名">
+            <el-form-item label="Username">
               <span>{{ props.row.username }}</span>
             </el-form-item>
-            <el-form-item label="昵称">
+            <el-form-item label="Nickname">
               <span>{{ props.row.nickname }}</span>
             </el-form-item>
-            <el-form-item label="密码">
+            <el-form-item label="Password">
               <el-button type="text" @click="openUpdatePassword(props.row)">
-                <i class="el-icon-edit"></i>编辑密码
+                <i class="el-icon-edit"></i>Change password
               </el-button>
             </el-form-item>
-            <el-form-item label="联系电话">
+            <el-form-item label="Contact phone">
               <span>{{ props.row.phone }}</span>
             </el-form-item>
-            <el-form-item label="性别">
+            <el-form-item label="Gender">
               <span>{{ props.row.gender }}</span>
             </el-form-item>
-            <el-form-item label="入职部门">
+            <el-form-item label="Department">
               <span>{{ props.row.department }}</span>
             </el-form-item>
-            <el-form-item label="状态">
-              <span v-if="props.row.entry">在职
-              <el-button @click="changeEntry(props.$index, props.row)" type="text">员工已离职？</el-button></span>
-              <span style="color: #f56c6c" v-else>离职</span>
+            <el-form-item label="Status">
+              <span v-if="props.row.entry">Employed
+              <el-button @click="changeEntry(props.$index, props.row)" type="text">Worker has left?</el-button></span>
+              <span style="color: #f56c6c" v-else>Departed</span>
             </el-form-item>
-            <el-form-item label="更新时间">
+            <el-form-item label="Updated at">
               <span>{{ props.row.updateAt }}</span>
             </el-form-item>
-            <el-form-item label="员工头像">
+            <el-form-item label="Worker avatar">
               <a v-if="props.row.avatar" target="_blank" :href="props.row.avatar">
-                <i class="el-icon-view"></i>查看
+                <i class="el-icon-view"></i>View
               </a>
-              <span v-else>他还没有上传头像</span>
+              <span v-else>No avatar uploaded</span>
             </el-form-item>
             <el-form-item>
               <el-button :disabled="!props.row.entry"
                          @click="handleListRole(props.row)"
                          type="info"
                          size="small"
-                         plain>查看权限
+                         plain>View permissions
               </el-button>
               <el-button :disabled="!props.row.entry"
                          type="primary"
                          @click="handleAddRole(props.row)"
                          size="small"
-                         plain>添加权限
+                         plain>Add permission
               </el-button>
               <el-button :disabled="props.row.entry"
                          @click="handleDeleteWork(props.$index, props.row.id)"
                          size="small"
                          type="danger"
-                         plain>删除员工
+                         plain>Delete worker
               </el-button>
             </el-form-item>
           </el-form>
@@ -66,55 +66,55 @@
       </el-table-column>
 
       <el-table-column
-          label="员工 ID"
+          label="Worker ID"
           width="430"
           prop="id">
       </el-table-column>
       <el-table-column
-          label="用户名"
+          label="Username"
           width="200"
           prop="username">
       </el-table-column>
       <el-table-column
-          label="所在部门"
+          label="Department"
           width="150">
         <template slot-scope="scope">
           <el-tag>{{ scope.row.department }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column
-          label="联系电话"
+          label="Contact phone"
           width="240"
           prop="phone">
       </el-table-column>
       <el-table-column
-          label="入职时间"
+          label="Start date"
           prop="createAt">
       </el-table-column>
 
     </el-table>
 
-    <el-dialog title="员工权限" :visible.sync="roleDialogVisible">
+    <el-dialog title="Worker permissions" :visible.sync="roleDialogVisible">
       <el-table v-loading="loading" :data="roleList">
-        <el-table-column property="value" label="权限" width="300"></el-table-column>
-        <el-table-column property="createAt" label="创建时间" width="300"></el-table-column>
-        <el-table-column label="操作">
+        <el-table-column property="value" label="Permission" width="300"></el-table-column>
+        <el-table-column property="createAt" label="Created at" width="300"></el-table-column>
+        <el-table-column label="Actions">
           <template slot-scope="scope">
             <el-popconfirm
                 @confirm="handleDeleteRole(scope.$index, scope.row.id)"
-                :title="'确定删除权限 < ' + scope.row.value +' > 吗？'"
+                :title="'Remove permission < ' + scope.row.value +' > ?'"
             >
-              <el-button slot="reference" size="small" type="danger" icon="el-icon-delete" plain>删除</el-button>
+              <el-button slot="reference" size="small" type="danger" icon="el-icon-delete" plain>Delete</el-button>
             </el-popconfirm>
           </template>
         </el-table-column>
       </el-table>
     </el-dialog>
 
-    <el-dialog width="450px" title="新增权限" :visible.sync="dialogFormVisible">
+    <el-dialog width="450px" title="Add permission" :visible.sync="dialogFormVisible">
       <el-form :model="addRoleForm">
-        <el-form-item label="权限列表" label-width="120px">
-          <el-select v-model="addRoleForm.value" placeholder="请选择新增的权限">
+        <el-form-item label="Permissions" label-width="150px">
+          <el-select v-model="addRoleForm.value" placeholder="Select a permission to add">
             <el-option v-for="(item, index) in systemRoles"
                        :key="index"
                        :label="item"
@@ -124,8 +124,8 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="submitAddRole">确 定</el-button>
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="submitAddRole">Confirm</el-button>
       </div>
     </el-dialog>
 
@@ -173,20 +173,20 @@ export default {
   methods: {
 
     openUpdatePassword(worker) {
-      this.$prompt('请输入新的密码', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$prompt('Enter a new password', 'Notice', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
       }).then(({value}) => {
         if (!value) {
           this.$message({
-            message: '密码不能为空',
+            message: 'Password is required',
             type: 'danger',
           });
           return
         }
         if (value.length < 6) {
           this.$message({
-            message: '请输入不少于6位的密码',
+            message: 'Enter a password with at least 6 characters',
             type: 'danger',
           });
           return
@@ -194,29 +194,29 @@ export default {
         worker.password = value
         UpdateWorker(worker).then(res => {
           this.$message({
-            message: '账号密码修改成功',
+            message: 'Password changed successfully',
             type: 'success',
           });
         })
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '取消修改'
+          message: 'Changes canceled'
         });
       });
     },
 
     changeEntry(index, worker) {
-      this.$confirm('此操作将该员工状态永久修改为离职, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This will permanently mark the worker as departed. Continue?', 'Notice', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         worker.entry = false
         UpdateWorker(worker).then(res => {
           this.$message({
             type: 'success',
-            message: '员工离职成功!'
+            message: 'Worker marked as departed!'
           });
         })
       })
@@ -227,7 +227,7 @@ export default {
         this.workerList.splice(index, 1)
         this.$message({
           type: 'success',
-          message: '员工信息删除成功!'
+          message: 'Worker deleted successfully!'
         });
       })
     },
@@ -249,7 +249,7 @@ export default {
           this.roleList.splice(index, 1)
           this.$message({
             type: 'success',
-            message: '员工权限删除成功!'
+            message: 'Worker permission removed successfully!'
           });
         }
       })
@@ -268,7 +268,7 @@ export default {
           this.addRoleForm.value = '';
           this.$message({
             type: 'success',
-            message: '员工权限添加成功!'
+            message: 'Worker permission added successfully!'
           });
         }
       })
@@ -285,7 +285,7 @@ export default {
 }
 
 .demo-table-expand label {
-  width: 90px;
+  width: 150px;
   color: #99a9bf;
 }
 

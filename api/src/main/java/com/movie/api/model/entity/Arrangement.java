@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 电影的排片 播放场次 开放多少个座位
+ * Film screening, schedule, and seat capacity
  */
 @Data
 @TableName("t_arrangement")
@@ -18,37 +18,37 @@ public class Arrangement implements Serializable {
 
     private String id;
 
-    //电影id
+    //Film ID
     private String fid;
 
-    //电影名
+    //Film title
     private String name;
 
-    //开放多少座位
+    //Number of available seats
     private Integer seatNumber;
 
-    //价格
+    //Price
     private double price;
 
-    //放映类型 2D 3D
+    //Screening format 2D 3D
     private String type;
 
-    //电影开始时间 2021-01-01
+    //Screening start time 2021-01-01
     private String date;
 
-    //电影开始时间 19:30:00
+    //Screening start time 19:30:00
     private String startTime;
 
-    //票房统计
+    //Box office
     private Integer boxOffice;
 
-    //结束时间
+    //End time
     private String endTime;
 
-    //创建人
+    //Created by
     private String founder;
 
-    //创建时间
+    //Created at
     private String createAt;
 
 }

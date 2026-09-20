@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 管理员
+ * Administrator
  */
 @Data
 @TableName("t_admin")

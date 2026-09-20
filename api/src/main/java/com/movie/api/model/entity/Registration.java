@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 活动报名
+ * Activity registration
  */
 @Data
 @TableName("t_registration")
@@ -14,10 +14,10 @@ public class Registration implements Serializable {
 
     private String id;
 
-    //活动id
+    //Activity ID
     private String aid;
 
-    //报名用户id
+    //Registered user ID
     private String uid;
 
     private String createAt;

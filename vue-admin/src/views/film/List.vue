@@ -2,13 +2,13 @@
   <div class="film-list">
 
     <el-dialog
-        title="电影信息修改"
+        title="Edit film details"
         :visible.sync="dialog1"
         width="60%">
 
-      <el-form ref="form" style="padding: 20px" :model="form" label-width="80px">
+      <el-form ref="form" style="padding: 20px" :model="form" label-width="140px">
 
-        <el-form-item label="电影封面">
+        <el-form-item label="Film cover">
           <el-upload
               class="upload-demo"
               drag
@@ -18,131 +18,131 @@
               :on-success="handleUploadSuccess"
               multiple>
             <i class="el-icon-upload"></i>
-            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-            <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过50mb</div>
+            <div class="el-upload__text">Drop a file here or <em>Click to upload</em></div>
+            <div class="el-upload__tip" slot="tip">Only upload jpg/png files, up to 50mb</div>
           </el-upload>
         </el-form-item>
 
-        <el-form-item label="电影名称">
+        <el-form-item label="Film title">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
 
-        <el-form-item label="上映地区">
-          <el-select v-model="form.region" placeholder="请选择上映区域">
-            <el-option label="中国大陆" value="中国大陆"></el-option>
-            <el-option label="中国香港" value="中国香港"></el-option>
-            <el-option label="中国台湾" value="中国台湾"></el-option>
-            <el-option label="日本" value="日本"></el-option>
-            <el-option label="美国" value="美国"></el-option>
-            <el-option label="韩国" value="韩国"></el-option>
-            <el-option label="英国" value="英国"></el-option>
-            <el-option label="法国" value="法国"></el-option>
-            <el-option label="印度" value="印度"></el-option>
-            <el-option label="其他" value="其他"></el-option>
+        <el-form-item label="Release region">
+          <el-select v-model="form.region" placeholder="Select the release region">
+            <el-option label="Mainland China" value="Mainland China"></el-option>
+            <el-option label="Hong Kong" value="Hong Kong"></el-option>
+            <el-option label="Taiwan" value="Taiwan"></el-option>
+            <el-option label="Japan" value="Japan"></el-option>
+            <el-option label="USA" value="USA"></el-option>
+            <el-option label="South Korea" value="South Korea"></el-option>
+            <el-option label="UK" value="UK"></el-option>
+            <el-option label="France" value="France"></el-option>
+            <el-option label="India" value="India"></el-option>
+            <el-option label="Other" value="Other"></el-option>
           </el-select>
         </el-form-item>
 
-        <el-form-item label="全片时长">
+        <el-form-item label="Duration">
           <el-input-number v-model="form.duration" :min="10" :max="550"></el-input-number>
         </el-form-item>
 
-        <el-form-item label="上映时间">
+        <el-form-item label="Release date">
           <el-col :span="11">
-            <el-date-picker type="date" value-format="yyyy年-MM月-dd日" placeholder="选择日期" v-model="form.releaseTime" style="width: 100%;"></el-date-picker>
+            <el-date-picker type="date" value-format="yyyy-MM-dd" placeholder="Select date" v-model="form.releaseTime" style="width: 100%;"></el-date-picker>
           </el-col>
         </el-form-item>
 
-        <el-form-item label="即时上架">
+        <el-form-item label="Publish now">
           <el-switch v-model="form.status"></el-switch>
         </el-form-item>
 
-        <el-form-item label="电影类型">
+        <el-form-item label="Genre">
           <el-radio-group v-model="form.type">
-            <el-radio style="padding-bottom: 20px" label="爱情"></el-radio>
-            <el-radio label="喜剧"></el-radio>
-            <el-radio label="科幻"></el-radio>
-            <el-radio label="动画"></el-radio>
-            <el-radio style="padding-bottom: 20px" label="恐怖"></el-radio>
-            <el-radio label="悬疑"></el-radio>
-            <el-radio label="冒险"></el-radio>
-            <el-radio label="动作"></el-radio>
-            <el-radio style="padding-bottom: 20px" label="犯罪"></el-radio>
-            <el-radio label="历史"></el-radio>
-            <el-radio label="古装"></el-radio>
-            <el-radio label="战争"></el-radio>
-            <el-radio label="纪录片"></el-radio>
-            <el-radio style="padding-bottom: 20px" label="家庭"></el-radio>
-            <el-radio label="传记"></el-radio>
-            <el-radio label="武侠"></el-radio>
-            <el-radio label="儿童"></el-radio>
-            <el-radio label="短片"></el-radio>
-            <el-radio label="其他"></el-radio>
+            <el-radio style="padding-bottom: 20px" label="Romance"></el-radio>
+            <el-radio label="Comedy"></el-radio>
+            <el-radio label="Science fiction"></el-radio>
+            <el-radio label="Animation"></el-radio>
+            <el-radio style="padding-bottom: 20px" label="Horror"></el-radio>
+            <el-radio label="Mystery"></el-radio>
+            <el-radio label="Adventure"></el-radio>
+            <el-radio label="Action"></el-radio>
+            <el-radio style="padding-bottom: 20px" label="Crime"></el-radio>
+            <el-radio label="History"></el-radio>
+            <el-radio label="Period drama"></el-radio>
+            <el-radio label="War"></el-radio>
+            <el-radio label="Documentary"></el-radio>
+            <el-radio style="padding-bottom: 20px" label="Family"></el-radio>
+            <el-radio label="Biography"></el-radio>
+            <el-radio label="Martial arts"></el-radio>
+            <el-radio label="Children"></el-radio>
+            <el-radio label="Short film"></el-radio>
+            <el-radio label="Other"></el-radio>
           </el-radio-group>
         </el-form-item>
 
-        <el-form-item label="内容简介">
+        <el-form-item label="Synopsis">
           <el-input rows="8" type="textarea" v-model="form.introduction"></el-input>
         </el-form-item>
 
       </el-form>
 
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialog1 = false">取 消</el-button>
-        <el-button type="primary" @click="submitUpdate()">确 定</el-button>
+        <el-button @click="dialog1 = false">Cancel</el-button>
+        <el-button type="primary" @click="submitUpdate()">Confirm</el-button>
       </span>
     </el-dialog>
 
     <el-dialog
-        title="新增电影排片"
+        title="Add screening"
         :visible.sync="dialog2"
         width="50%">
 
-      <el-form ref="form" :model="arrangement" label-width="80px">
+      <el-form ref="form" :model="arrangement" label-width="140px">
 
-        <el-form-item label="电影名称">
+        <el-form-item label="Film title">
           <el-input :disabled="true" v-model="arrangement.name"></el-input>
         </el-form-item>
 
-        <el-form-item label="开放座位">
+        <el-form-item label="Available seats">
           <el-input-number v-model="arrangement.seatNumber" :min="10" :max="100"></el-input-number>
         </el-form-item>
 
-        <el-form-item label="放映类型">
-          <el-select v-model="arrangement.type" placeholder="请选择放映类型">
-            <el-option label="2D 放映" value="2D放映"></el-option>
-            <el-option label="3D 放映" value="3D放映"></el-option>
+        <el-form-item label="Screening format">
+          <el-select v-model="arrangement.type" placeholder="Select a screening format">
+            <el-option label="2D" value="2D"></el-option>
+            <el-option label="3D" value="3D"></el-option>
           </el-select>
         </el-form-item>
 
-        <el-form-item style="width: 500px" label="放映日期">
+        <el-form-item style="width: 500px" label="Screening date">
           <el-col :span="11">
-            <el-date-picker type="date" placeholder="选择日期" v-model="arrangement.date"
+            <el-date-picker type="date" placeholder="Select date" v-model="arrangement.date"
                             value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
           </el-col>
         </el-form-item>
 
-        <el-form-item style="width: 500px" label="放映时间">
+        <el-form-item style="width: 500px" label="Screening time">
           <el-col :span="11">
-            <el-time-picker placeholder="开始时间" value-format="HH:mm:ss" v-model="arrangement.startTime" style="width: 100%;"></el-time-picker>
+            <el-time-picker placeholder="Start time" value-format="HH:mm:ss" v-model="arrangement.startTime" style="width: 100%;"></el-time-picker>
           </el-col>
           <el-col style="text-align: center" class="line" :span="2">-</el-col>
           <el-col :span="11">
-            <el-time-picker placeholder="结束时间" value-format="HH:mm:ss" v-model="arrangement.endTime" style="width: 100%;"></el-time-picker>
+            <el-time-picker placeholder="End time" value-format="HH:mm:ss" v-model="arrangement.endTime" style="width: 100%;"></el-time-picker>
           </el-col>
         </el-form-item>
 
-        <el-form-item label="电影票价">
+        <el-form-item label="Ticket price">
           <el-input-number v-model="arrangement.price" :precision="2" :step="0.1" :max="999.99"></el-input-number>
         </el-form-item>
 
-        <el-form-item label="排片人">
+        <el-form-item label="Scheduled by">
           <el-input type="textarea" v-model="arrangement.founder"></el-input>
         </el-form-item>
       </el-form>
 
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialog2 = false">取 消</el-button>
-        <el-button type="primary" @click="submitArrange()">确 定</el-button>
+        <el-button @click="dialog2 = false">Cancel</el-button>
+        <el-button type="primary" @click="submitArrange()">Confirm</el-button>
       </span>
     </el-dialog>
 
@@ -151,7 +151,7 @@
         :data="filmList.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
         style="width: 100%">
 
-      <el-table-column label="电影名">
+      <el-table-column label="Film title">
         <template slot-scope="scope">
           <el-image
               style="width: 100px; height: 145px"
@@ -162,30 +162,30 @@
       </el-table-column>
 
       <el-table-column
-          label="上映时间"
+          label="Release date"
           prop="releaseTime">
       </el-table-column>
 
       <el-table-column
-          label="类型"
+          label="Type"
           prop="type">
       </el-table-column>
 
-      <el-table-column label="上架状态">
+      <el-table-column label="Publication status">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.status === true" type="success" disable-transitions>上架</el-tag>
-          <el-tag v-if="scope.row.status === false" type="warning" disable-transitions>下架</el-tag>
+          <el-tag v-if="scope.row.status === true" type="success" disable-transitions>Published</el-tag>
+          <el-tag v-if="scope.row.status === false" type="warning" disable-transitions>Unpublished</el-tag>
         </template>
       </el-table-column>
 
       <el-table-column
-          label="地区"
+          label="Region"
           prop="region">
       </el-table-column>
 
-      <el-table-column label="电影时长">
+      <el-table-column label="Duration">
         <template slot-scope="scope">
-          <el-tag size="medium" effect="plain">{{ scope.row.duration }} 分钟</el-tag>
+          <el-tag size="medium" effect="plain">{{ scope.row.duration }}  minutes</el-tag>
         </template>
       </el-table-column>
 
@@ -194,35 +194,35 @@
           <el-input
               v-model="search"
               size="mini"
-              placeholder="输入关键字搜索"/>
+              placeholder="Search by keyword"/>
         </template>
         <template style="white-space: nowrap" slot-scope="scope">
           <el-button
               size="mini"
               icon="el-icon-edit"
               type="primary"
-              @click="handleEdit(scope.$index, scope.row)">修改
+              @click="handleEdit(scope.$index, scope.row)">Edit
           </el-button>
           <el-button
               size="mini"
               icon="el-icon-circle-plus"
               type="success"
-              @click="handleArrange(scope.$index, scope.row)">排片
+              @click="handleArrange(scope.$index, scope.row)">Screenings
           </el-button>
           <el-popconfirm
-              confirm-button-text='确定'
-              cancel-button-text='不用了'
+              confirm-button-text='Confirm'
+              cancel-button-text='No thanks'
               icon="el-icon-info"
               icon-color="red"
               @confirm=handleDelete(scope.$index,scope.row)
-              title=" 确定要删除此电影吗？ "
+              title=" Delete this film? "
           >
             <el-button
                 style="margin-left: 8px"
                 size="mini"
                 icon="el-icon-delete"
                 type="danger"
-                slot="reference">删除
+                slot="reference">Delete
             </el-button>
           </el-popconfirm>
         </template>
@@ -265,7 +265,7 @@ export default {
         startTime: '',
         endTime: '',
         founder: '',
-        type: '2D放映',
+        type: '2D',
       },
       filmList: [],
       search: '',
@@ -314,7 +314,7 @@ export default {
       DeleteById(row.id).then(res=>{
         this.filmList.splice(index, 1)
         this.$message({
-          message: '电影《' + row.name + '》删除成功！',
+          message: 'Film ' + row.name + ' deleted successfully!',
           type: 'success'
         });
       })

@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface UploadService {
 
-    //检验文件并且保存 返回值为Upload字段的id
+    //Validate and save a file, returning its Upload ID
     String checkAndSaveUpload(MultipartFile file);
 
     void deleteById(String id);

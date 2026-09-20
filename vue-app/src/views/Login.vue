@@ -7,28 +7,28 @@
             <div class="login-form-header">
                 <img style="width: 75px; height: 75px;float: left;padding-right: 40px;" src="../assets/img/logo.png"
                      alt=""/>
-                <div class="login-form-text">小小电影 - 登录</div>
+                <div class="login-form-text">Little Cinema - Log in</div>
             </div>
             <div style="color: #000000;font-weight: bolder">
-                <p style="font-size: 20px">用户名</p>
-                <el-input class="login-form-input" v-model="username" placeholder="账 号"></el-input>
-                <p style="font-size: 20px">密码</p>
-                <el-input class="login-form-input" placeholder="密 码" v-model="password" show-password></el-input>
+                <p style="font-size: 20px">Username</p>
+                <el-input class="login-form-input" v-model="username" placeholder="Username"></el-input>
+                <p style="font-size: 20px">Password</p>
+                <el-input class="login-form-input" placeholder="Password" v-model="password" show-password></el-input>
                 <div style="padding-top: 10px">
-                    <el-checkbox v-model="remember">记住密码</el-checkbox>
+                    <el-checkbox v-model="remember">Remember me</el-checkbox>
                     <div style="float: right">
                         <el-link href="/forget" style="font-weight: bolder;font-size: 14px;color: #000000;"
                                  :underline="false">
-                            忘记密码?
+                            Forgot password?
                         </el-link>
                     </div>
                 </div>
-                <el-button @click="postLogin" class="login-form-button" type="primary">登录</el-button>
+                <el-button @click="postLogin" class="login-form-button" type="primary">Log in</el-button>
             </div>
             <div class="login-form-footer">
                 <el-link href="/register" style="font-weight: bolder;font-size: 16px;color: #000000;"
                          :underline="false">
-                    还没有账号？去注册
+                    Need an account? Register
                     <i style="font-weight: bolder;font-size: 15px" class="el-icon-right"></i>
                 </el-link>
             </div>
@@ -71,7 +71,7 @@
 
     .background{
         width:100%;
-        height:100%;  /**宽高100%是为了图片铺满屏幕 */
+        height:100%;  /**Use full width and height to fill the screen */
         z-index:-1;
         position: absolute;
     }

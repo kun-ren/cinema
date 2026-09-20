@@ -35,7 +35,7 @@ public class WorkerServiceImpl implements WorkerService {
     @Override
     public Worker create(Worker worker) throws Exception {
         if (workerMapper.selectOne(new QueryWrapper<Worker>().in("username", worker.getUsername())) != null) {
-            throw new Exception("已存在的用户名");
+            throw new Exception("Username already exists");
         }
         String now = DataTimeUtil.getNowTimeString();
         worker.setEntry(true);
@@ -44,7 +44,7 @@ public class WorkerServiceImpl implements WorkerService {
         worker.setCreateAt(now);
         worker.setUpdateAt(now);
         workerMapper.insert(worker);
-        //添加worker权限
+        //Assign the basic worker role
         roleMapper.insert(new Role(UUID.randomUUID().toString(), worker.getId(), Roles.ROLE_WORKER, now));
         return worker;
     }
@@ -54,8 +54,8 @@ public class WorkerServiceImpl implements WorkerService {
         QueryWrapper<Worker> wrapper = new QueryWrapper<>();
         wrapper.in("username", dto.getUsername());
         Worker worker = workerMapper.selectOne(wrapper);
-        if (worker == null) throw new Exception("用户名或密码错误");
-        if (!bCryptPasswordEncoder.matches(dto.getPassword(), worker.getPassword())) throw new Exception("用户名或密码错误");
+        if (worker == null) throw new Exception("Incorrect username or password");
+        if (!bCryptPasswordEncoder.matches(dto.getPassword(), worker.getPassword())) throw new Exception("Incorrect username or password");
         return worker;
     }
 
@@ -63,7 +63,7 @@ public class WorkerServiceImpl implements WorkerService {
     public void update(Worker worker) throws Exception {
         Worker one = workerMapper.selectOne(new QueryWrapper<Worker>().in("username", worker.getUsername()));
         if (one != null && !one.getId().equals(worker.getId())) {
-            throw new Exception("已存在的用户名");
+            throw new Exception("Username already exists");
         }
         worker.setPassword(bCryptPasswordEncoder.encode(worker.getPassword()));
         worker.setUpdateAt(DataTimeUtil.getNowTimeString());
@@ -83,7 +83,7 @@ public class WorkerServiceImpl implements WorkerService {
     @Override
     public void deleteById(String id) {
         workerMapper.deleteById(id);
-        //删除所有权限
+        //Remove all permissions
         roleService.deleteWorkerAllRoles(id);
     }
 

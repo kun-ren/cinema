@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 订单
+ * Order
  */
 @Data
 @TableName("t_order")
@@ -18,28 +18,28 @@ public class Order implements Serializable {
 
     private String id;
 
-    //用户id
+    //User ID
     private String uid;
 
-    //取票电话
+    //Ticket collection phone
     private String phone;
 
-    //场次id
+    //Screening ID
     private String aid;
 
-    //座位
+    //Seats
     private String seats;
 
-    //金额
+    //Amount
     private double price;
 
-    //状态
+    //Status
     private Integer status;
 
-    //创建时间
+    //Created at
     private String createAt;
 
-    //更新时间
+    //Updated at
     private String payAt;
 
 }

@@ -7,25 +7,25 @@
       <div class="login-form-header">
         <img style="width: 75px; height: 75px;float: left;padding-right: 40px;" src="../assets/img/logo.png"
              alt=""/>
-        <div class="login-form-text">小小电影 - 注册</div>
+        <div class="login-form-text">Little Cinema - Register</div>
       </div>
       <div style="color: #000000;font-weight: bolder">
-        <p style="font-size: 20px">用户名</p>
-        <el-input class="login-form-input" v-model="username" placeholder="账 号"></el-input>
-        <p style="font-size: 20px">密码</p>
-        <el-input class="login-form-input" placeholder="密 码" v-model="password" show-password></el-input>
-        <p style="font-size: 20px">再次输入密码</p>
-        <el-input class="login-form-input" placeholder="确 认 密 码" v-model="checkPassword"
+        <p style="font-size: 20px">Username</p>
+        <el-input class="login-form-input" v-model="username" placeholder="Username"></el-input>
+        <p style="font-size: 20px">Password</p>
+        <el-input class="login-form-input" placeholder="Password" v-model="password" show-password></el-input>
+        <p style="font-size: 20px">Enter your password again</p>
+        <el-input class="login-form-input" placeholder="Confirm password" v-model="checkPassword"
                   show-password></el-input>
         <div style="padding-top: 10px ;color: black">
-          <el-checkbox v-model="agree">我已同意"小小电影"用户注册协议!</el-checkbox>
+          <el-checkbox v-model="agree">I agree to the Little Cinema user agreement.</el-checkbox>
         </div>
         <el-button @click="postLogin" class="login-form-button" type="primary">SIGN UP</el-button>
       </div>
       <div class="login-form-footer">
         <el-link href="/login" style="font-weight: bolder;font-size: 16px;color: #91949c;"
                  :underline="false">
-          我有账号 去登录
+          Already have an account? Log in
           <i style="font-weight: bolder;font-size: 15px" class="el-icon-right"></i>
         </el-link>
       </div>
@@ -51,21 +51,21 @@ export default {
     postLogin() {
       if (this.username.length < 6) {
         this.$message({
-          message: '请输入不少于6位的用户名',
+          message: 'Enter a username with at least 6 characters',
           type: 'warning'
         });
         return
       }
       if (this.agree === false) {
         this.$message({
-          message: '请勾选 我已同意"小小电影"用户注册协议!',
+          message: 'Please accept the Little Cinema user agreement!',
           type: 'warning'
         });
         return
       }
       if (this.password !== this.checkPassword) {
         this.$message({
-          message: '您两次输入的密码不同!',
+          message: 'The passwords do not match!',
           type: 'warning'
         });
         return
@@ -89,7 +89,7 @@ export default {
 <style scoped>
   .background{
     width:100%;
-    height:100%;  /**宽高100%是为了图片铺满屏幕 */
+    height:100%;  /**Use full width and height to fill the screen */
     z-index:-1;
     position: absolute;
   }

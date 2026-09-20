@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 客服评价
+ * Support reviews
  */
 @Data
 @TableName("t_worker_evaluate")
@@ -16,16 +16,16 @@ public class WorkerEvaluate implements Serializable {
 
     private String id;
 
-    //客服id
+    //Support worker ID
     private String wid;
 
-    //评价的用户id
+    //Reviewer user ID
     private String uid;
 
-    //评价内容
+    //Review text
     private String content;
 
-    //满意 非常满意
+    //Satisfaction level
     private String type;
 
     private String createAt;

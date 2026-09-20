@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@Api(tags = "用户接口")
+@Api(tags = "User API")
 @RequestMapping("/api/user")
 public class UserController {
 
@@ -24,11 +24,11 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    @ApiOperation("用户登录")
+    @ApiOperation("User login")
     public Map<String, Object> login(@RequestBody LoginDto dto) throws Exception {
         User user = userService.login(dto);
         Map<String, Object> map = new HashMap<>();
-        //是否选择记住我
+        //Use the remember-me token lifetime when selected
         long exp = dto.isRemember() ? JwtTokenUtil.REMEMBER_EXPIRATION_TIME : JwtTokenUtil.EXPIRATION_TIME;
         List<String> roles = new ArrayList<>();
         roles.add(Roles.ROLE_USER);
@@ -38,25 +38,25 @@ public class UserController {
     }
 
     @GetMapping("")
-    @ApiOperation(value = "查找所有用户")
+    @ApiOperation(value = "List all users")
     public List<User> findAll() {
         return userService.findAll();
     }
 
     @PutMapping("")
-    @ApiOperation(value = "更新用户")
+    @ApiOperation(value = "Update user")
     public User updateUser(@RequestBody User user) {
         return userService.update(user);
     }
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "查找用户")
+    @ApiOperation(value = "Find user")
     public User findById(@PathVariable String id) {
         return userService.findById(id);
     }
 
     @PostMapping("/register")
-    @ApiOperation(value = "用户注册")
+    @ApiOperation(value = "User registration")
     public User save(@RequestBody User user) throws Exception {
         return userService.save(user);
     }

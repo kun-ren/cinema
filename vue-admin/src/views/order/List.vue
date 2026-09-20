@@ -8,81 +8,81 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="订单ID：">
+            <el-form-item label="Order ID: ">
               <span>{{ props.row.order.id }}</span>
             </el-form-item>
-            <el-form-item label="用户ID：">
+            <el-form-item label="User ID: ">
               <span>{{ props.row.user.id }}</span>
             </el-form-item>
-            <el-form-item label="电影ID：">
+            <el-form-item label="Film ID: ">
               <span>{{ props.row.film.id }}</span>
             </el-form-item>
-            <el-form-item label="场次ID：">
+            <el-form-item label="Screening ID: ">
               <span>{{ props.row.arrangement.id }}</span>
             </el-form-item>
-            <el-form-item label="电影名：">
-              <span>《 {{ props.row.film.name }} 》</span>
+            <el-form-item label="Film title: ">
+              <span> {{ props.row.film.name }} </span>
             </el-form-item>
-            <el-form-item label="座位号：">
+            <el-form-item label="Seat number: ">
               <span>{{ props.row.order.seats }}</span>
             </el-form-item>
-            <el-form-item label="订单金额：">
+            <el-form-item label="Order total: ">
               <span>{{ props.row.order.price }}</span>
             </el-form-item>
-            <el-form-item label="下单时间：">
+            <el-form-item label="Ordered at: ">
               <span>{{ props.row.order.createAt }}</span>
             </el-form-item>
-            <el-form-item label="支付时间：">
+            <el-form-item label="Paid at: ">
               <span>{{ props.row.order.payAt }}</span>
             </el-form-item>
           </el-form>
         </template>
       </el-table-column>
       <el-table-column
-          label="订单 ID"
+          label="Order ID"
           width="400"
           prop="order.id">
       </el-table-column>
       <el-table-column
           width="200"
-          label="订单金额"
+          label="Order total"
           prop="order.price">
       </el-table-column>
-      <el-table-column label="订单状态">
+      <el-table-column label="Order status">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.order.status === 2" type="success">支付成功</el-tag>
-          <el-tag v-if="scope.row.order.status === 0" type="info">等待支付</el-tag>
-          <el-tag v-if="scope.row.order.status === 3" type="warning">已被撤销</el-tag>
-          <el-tag v-if="scope.row.order.status === 1" type="danger">支付失败</el-tag>
+          <el-tag v-if="scope.row.order.status === 2" type="success">Paid</el-tag>
+          <el-tag v-if="scope.row.order.status === 0" type="info">Awaiting payment</el-tag>
+          <el-tag v-if="scope.row.order.status === 3" type="warning">Canceled</el-tag>
+          <el-tag v-if="scope.row.order.status === 1" type="danger">Payment failed</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="250">
+      <el-table-column label="Actions" width="250">
         <template slot-scope="scope">
           <el-button @click="handle1(scope.$index, scope.row.order)" size="small" type="warning"
                      icon="el-icon-refresh-right"
                      :disabled="scope.row.order.status === 3"
-                     plain>撤销订单
+                     plain>Cancel order
           </el-button>
           <el-button @click="handle2(scope.$index, scope.row.order)" size="small" type="danger"
                      icon="el-icon-circle-close"
-                     plain>上报异常
+                     plain>Report issue
           </el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <el-dialog title="上报异常表单" :visible.sync="dialogFormVisible">
+    <el-dialog title="Report an order issue" :visible.sync="dialogFormVisible">
       <el-form :model="form" style="width: 400px">
-        <el-form-item style="width: 100%" label="上报人" label-width="120px">
+        <el-form-item style="width: 100%" label="Reported by" label-width="150px">
           <el-input v-model="form.reason" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item style="width: 100%" label="上报原因" label-width="120px">
+        <el-form-item style="width: 100%" label="Reason" label-width="150px">
           <el-input v-model="form.reviewer" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="submit">确 定</el-button>
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="submit">Confirm</el-button>
       </div>
     </el-dialog>
 
@@ -132,7 +132,7 @@ export default {
         this.loadOrderList();
         this.$message({
           type: 'success',
-          message: '订单撤销成功!'
+          message: 'Order canceled successfully!'
         });
       })
     },
@@ -147,7 +147,7 @@ export default {
         if (res.success) {
           this.$message({
             type: 'success',
-            message: '订单异常上报成功!'
+            message: 'Order issue reported successfully!'
           });
           this.dialogFormVisible = false
         }
@@ -169,7 +169,7 @@ export default {
 }
 
 .demo-table-expand label {
-  width: 90px;
+  width: 150px;
   color: #99a9bf;
 }
 

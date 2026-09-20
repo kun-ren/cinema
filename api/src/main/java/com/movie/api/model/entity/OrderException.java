@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 订单异常
+ * Order issue
  */
 @Data
 @TableName("t_order_exception")
@@ -18,17 +18,17 @@ public class OrderException implements Serializable {
 
     private String id;
 
-    //订单id
+    //Order ID
     private String oid;
 
-    //异常原因
+    //Issue reason
     private String reason;
 
-    //审核人 申报人
+    //Reviewer or reporter
     private String reviewer;
 
-    //true 已处理
-    //false 待处理
+    //true Resolved
+    //false Pending
     private boolean status;
 
     private String result;

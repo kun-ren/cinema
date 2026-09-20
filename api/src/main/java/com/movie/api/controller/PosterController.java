@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(tags = "首页海报接口")
+@Api(tags = "Homepage poster API")
 @RequestMapping("/api/poster")
 public class PosterController {
 
@@ -18,19 +18,19 @@ public class PosterController {
     private PosterService posterService;
 
     @PostMapping("")
-    @ApiOperation("添加首页海报")
+    @ApiOperation("Add homepage poster")
     public void save(@RequestBody Poster poster) {
         posterService.save(poster);
     }
 
     @PutMapping("")
-    @ApiOperation("更新海报")
+    @ApiOperation("Update poster")
     public void update(@RequestBody Poster poster) {
         posterService.update(poster);
     }
 
     @GetMapping("")
-    @ApiOperation("获取所有海报")
+    @ApiOperation("List all posters")
     public List<Poster> list(String status) {
         if (status != null) {
             return posterService.findByStatus(Boolean.parseBoolean(status));
@@ -39,13 +39,13 @@ public class PosterController {
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation(("删除海报"))
+    @ApiOperation(("Delete poster"))
     public void delete(@PathVariable String id) {
         posterService.deleteById(id);
     }
 
     @DeleteMapping("")
-    @ApiOperation(("删除所有海报"))
+    @ApiOperation(("Delete all posters"))
     public void deleteAll() {
         posterService.deleteAll();
     }
